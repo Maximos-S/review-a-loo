@@ -42,7 +42,7 @@ const componentForm = {
     return (
         <nav className="nav-bar">
             <script
-            src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDaVod7t2xOMktKIYwMRb6NPfUsayjed_0
+            src={`https://maps.googleapis.com/maps/api/js?key=
         &callback=activatePlacesSearch&libraries=places&v=weekly`}
             defer
             ></script>
