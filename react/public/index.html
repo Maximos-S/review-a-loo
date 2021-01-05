@@ -3,6 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <title>Simple React App</title>
+            <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaVod7t2xOMktKIYwMRb6NPfUsayjed_0
+&callback=activatePlacesSearch&libraries=places&v=weekly"
+      defer
+    ></script>
+            <script> 
+                function activatePlacesSearch() {
+                let input = document.getElementById('autocomplete');
+                let autocomplete = new google.maps.places.Autocomplete(input)
+                }
+            </script>
   </head>
   <body>
     <div id="root"></div>
