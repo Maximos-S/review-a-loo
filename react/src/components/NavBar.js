@@ -6,6 +6,9 @@ import './navBar.css'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
     const [onRegister, setOnRegister] = useState(false)
+    const [longitude, setLongitude] = useState("")
+    const [latitude, setLatitude] = useState("")
+
 
     let history = useHistory()
     let location = useLocation()
@@ -18,6 +21,13 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
         return () => {
         }
     }, [location]);
+
+
+    const searchRegion = () => {
+        console.log("hittttttts", longitude, latitude)
+        return
+    }
+
     const rerouteHome = () => {
         history.push("/")
     }
@@ -27,25 +37,10 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
         
     }
 
-    let placeSearch;
-let autocomplete;
-const componentForm = {
-  street_number: "short_name",
-  route: "long_name",
-  locality: "long_name",
-  administrative_area_level_1: "short_name",
-  country: "long_name",
-  postal_code: "short_name",
-};
-
+    console.log("api", process.env)
 
     return (
         <nav className="nav-bar">
-            <script
-            src={`https://maps.googleapis.com/maps/api/js?key=
-        &callback=activatePlacesSearch&libraries=places&v=weekly`}
-            defer
-            ></script>
             <div className="logo">
                 <div className="home-link" onClick={rerouteHome}>
                 Review-a-Loo
@@ -53,9 +48,16 @@ const componentForm = {
             </div>
             <div className="search-bar-container">
                 <Autocomplete
-                    style={{width: '90%'}}
+                    className="search-bar"
+                    style={{}}
                     onPlaceSelected={(place) => {
-                    console.log(place);
+                        if (place.geometry) {
+                            setLongitude(place.geometry.location.lng())
+                            setLatitude(place.geometry.location.lat())
+                            searchRegion()
+                            console.log(longitude)
+                            console.log(latitude)
+                        }
                     }}
                     types={['(cities)']}
                     componentRestrictions={{country: "usa"}}

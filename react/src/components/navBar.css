@@ -14,6 +14,15 @@
     border-bottom: solid 2px brown;
 }
 
+.search-bar {
+    border: none;
+    background-color: lavender;
+    text-align: center;
+    height: 30px;
+    width: 500px;
+}
+
+
 .home-link {
     cursor: pointer;
     font-size: 30px;
