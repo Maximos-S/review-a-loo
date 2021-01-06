@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import Autocomplete from 'react-google-autocomplete';
+import {searchLocation} from '../services/businesses'
 import './navBar.css'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
@@ -24,6 +25,10 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
 
 
     const searchRegion = () => {
+        const regionData = new FormData()
+        regionData.append('lat', latitude)
+        regionData.append('lng', longitude)
+        searchLocation(latitude, longitude);
         console.log("hittttttts", longitude, latitude)
         return
     }
