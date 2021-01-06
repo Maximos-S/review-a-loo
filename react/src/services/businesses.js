@@ -6,6 +6,5 @@ export const searchLocation = async(lat, lng) => {
     }, 
     body: JSON.stringify({"lat": lat, "lng": lng})
   });
-  console.log(await response.json());
-  return 
+  return await response.json();
 }

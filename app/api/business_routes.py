@@ -15,6 +15,6 @@ def searchRegion ():
     # headers = {'Authorization': 'Bearer={token}'.format(token=os.environ.get("YELP_API_KEY"))}
 
     # print("headers", headers)
-    response = yelp_api.search_query(term='ice cream', location='austin, tx', sort_by='rating', limit=5)
-    print("############################", response)
-    return {"hello": "hello"}
+    response = yelp_api.search_query(term='convenience stores', longitude=form.data["lng"], latitude=form.data["lat"], sort_by='rating', limit=10)
+    print("############################", response['businesses'])
+    return {"result": response['businesses']}

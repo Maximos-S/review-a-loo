@@ -9,6 +9,7 @@ import Home from "./components/Home";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [businesses, setBusinesses] = useState(false)
 
   useEffect(() => {
     (async() => {
@@ -26,7 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
+      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setBusinesses={setBusinesses}/>
       <div className="main-content">
         <Switch>
           <Route path="/register" exact={true}>
@@ -35,7 +36,7 @@ function App() {
             />
           </Route>
           <Route path="/" exact={true} authenticated={authenticated}>
-            <Home authenticated={authenticated}/>
+            <Home authenticated={authenticated} businesses={businesses}/>
           </Route>
         </Switch>
       </div>

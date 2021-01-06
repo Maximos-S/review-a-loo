@@ -5,7 +5,7 @@ import Autocomplete from 'react-google-autocomplete';
 import {searchLocation} from '../services/businesses'
 import './navBar.css'
 
-const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
+const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses }) => {
     const [onRegister, setOnRegister] = useState(false)
     const [longitude, setLongitude] = useState("")
     const [latitude, setLatitude] = useState("")
@@ -24,13 +24,31 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
     }, [location]);
 
 
-    const searchRegion = () => {
+    const searchRegion = async () => {
         const regionData = new FormData()
         regionData.append('lat', latitude)
         regionData.append('lng', longitude)
-        searchLocation(latitude, longitude);
-        console.log("hittttttts", longitude, latitude)
+        let res = await searchLocation(latitude, longitude);
+        console.log(res.result)
+        setBusinesses(res.result)
         return
+    }
+
+    const searchNearMe = async () => {
+        // const locationData = new FormData()
+        let lat;
+        let lng;
+
+        await navigator.geolocation.getCurrentPosition((position)=> {
+            lat = position.coords.latitude
+            lng = position.coords.longitude
+            setLatitude(lat)
+            setLongitude(lng)
+        }, () => ("Your location is not supported by your browser"))
+
+        let res = await searchLocation(latitude, longitude);
+        console.log(res.result)
+        setBusinesses(res.result) 
     }
 
     const rerouteHome = () => {
@@ -41,8 +59,6 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
         history.push("/register")
         
     }
-
-    console.log("api", process.env)
 
     return (
         <nav className="nav-bar">
@@ -67,6 +83,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user }) => {
                     types={['(cities)']}
                     componentRestrictions={{country: "usa"}}
                 />
+                <button onClick={searchNearMe}>Search Near Me</button>
             </div>
             <div className="user-buttons">
             {authenticated?
