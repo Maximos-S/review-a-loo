@@ -6,7 +6,7 @@ const BusinessCard = ({business}) => {
     return (
         <div className="business-card-container">
             <div className="business-image-container">
-                <img className="business-image" src={business.image_url} alt="business"/>
+                <img className="business-image" src={business.image} alt="business"/>
             </div>
             <div className="business-info-container">
                 <div className="business-title">
