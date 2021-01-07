@@ -24,11 +24,10 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
     }, [location]);
 
 
-    const searchRegion = async () => {
-        const regionData = new FormData()
-        regionData.append('lat', latitude)
-        regionData.append('lng', longitude)
-        let res = await searchLocation(latitude, longitude);
+    const searchRegion = async (lat,lng) => {
+        setLongitude(lng)
+        setLatitude(lat)
+        let res = await searchLocation(lat, lng);
         console.log(res.result)
         setBusinesses(res.result)
         return
@@ -39,16 +38,16 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
         let lat;
         let lng;
 
-        await navigator.geolocation.getCurrentPosition((position)=> {
+        navigator.geolocation.getCurrentPosition(async (position)=> {
             lat = position.coords.latitude
             lng = position.coords.longitude
             setLatitude(lat)
             setLongitude(lng)
+            let res = await searchLocation(lat, lng);
+            console.log(res.result)
+            setBusinesses(res.result) 
         }, () => ("Your location is not supported by your browser"))
 
-        let res = await searchLocation(latitude, longitude);
-        console.log(res.result)
-        setBusinesses(res.result) 
     }
 
     const rerouteHome = () => {
@@ -73,11 +72,9 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
                     style={{}}
                     onPlaceSelected={(place) => {
                         if (place.geometry) {
-                            setLongitude(place.geometry.location.lng())
-                            setLatitude(place.geometry.location.lat())
-                            searchRegion()
-                            console.log(longitude)
-                            console.log(latitude)
+                            const lat = place.geometry.location.lat()
+                            const lng = place.geometry.location.lng()
+                            searchRegion(lat, lng)
                         }
                     }}
                     types={['(cities)']}
