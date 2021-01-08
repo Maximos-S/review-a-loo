@@ -17,8 +17,12 @@ class Business(db.Model):
     display_address = db.Column(db.String(255))
     yelp_url = db.Column(db.String(255))
 
-    reviews = db.relationship('Review', backref="business", lazy="joined")
-
+    reviews = db.relationship('Review',
+                                backref="business", 
+                                lazy="joined",
+                                # primaryjoin= id == reviews.c.businessId
+                                )
+    
     @property
     def get_star_avg(self):
         return self.star_avg

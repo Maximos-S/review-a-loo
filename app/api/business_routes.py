@@ -43,12 +43,21 @@ def searchRegion ():
         # print(business_list)   
         return {"result": business_list}
     return {"error": "There was an error with your location search"}
+#returns business data
+@business_routes.route("/<int:id>")
+def get_business(id):
+    business = Business.query.filter(Business.id == id).first()
+
+    if business:
+        return {"business": business.to_dict()}
+    else:
+        return {"errors": "Business does not exist"}
 
 # creates a review for a business
 @business_routes.route("/<int:id>", methods=["POST"])
 def create_review(id):
     form = ReviewForm()
-
+    print("########formdata#######",form.data)
     if form.validate_on_submit:
         review = Review(
             userId=form.data["userId"],
@@ -70,7 +79,7 @@ def create_review(id):
         business.star_avg = avg
         db.session.add(business)
         db.session.commit()
-
-        return {"successs": business.to_dict()}
+        print("#######this is businesssss!!!#####", business.to_dict())
+        return {"business": business.to_dict()}
     else:
         return {'errors': "Please make sure all the required data is filled out"}, 401

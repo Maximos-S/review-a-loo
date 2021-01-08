@@ -6,6 +6,7 @@ import { authenticate } from "./services/auth";
 import Register from "./components/auth/Register";
 import Home from "./components/home/Home";
 import BusinessProfile from "./components/businessprofile/BusinessProfile";
+import {UserContext} from "./components/context/UserContext"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -13,7 +14,7 @@ function App() {
   const [businesses, setBusinesses] = useState(false)
   const [business, setBusiness] = useState(false)
   const [user, setUser] = useState(false)
-
+  const [reviews, setReviews] = useState([])
   useEffect(() => {
     (async() => {
       const user = await authenticate();
@@ -31,25 +32,27 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setBusinesses={setBusinesses} setUser={setUser}/>
-      <div className="main-content">
-        <Switch>
-          <Route path="/register" exact={true}>
-            <Register 
-            setAuthenticated={setAuthenticated} authenticated={authenticated}
-            />
-          </Route>
-          <Route path="/business/:businessId" exact={true}>
-            <BusinessProfile 
-            setAuthenticated={setAuthenticated} authenticated={authenticated} setBusiness={setBusiness} business={business}
-            user={user}
-            />
-          </Route>
-          <Route path="/" exact={true} authenticated={authenticated}>
-            <Home authenticated={authenticated} businesses={businesses} setBusiness={setBusiness}/>
-          </Route>
-        </Switch>
-      </div>
+      <UserContext.Provider value={ {user,setUser, authenticated, setAuthenticated, setBusiness, business, setBusinesses, businesses, reviews, setReviews} }>
+        <NavBar />
+        <div className="main-content">
+          <Switch>
+            <Route path="/register" exact={true}>
+              <Register 
+              // setAuthenticated={setAuthenticated} authenticated={authenticated}
+              />
+            </Route>
+            <Route path="/business/:businessId" exact={true}>
+              <BusinessProfile 
+              // setAuthenticated={setAuthenticated} authenticated={authenticated} setBusiness={setBusiness} business={business}
+              // user={user}
+              />
+            </Route>
+            <Route path="/" exact={true} authenticated={authenticated}>
+              <Home authenticated={authenticated} businesses={businesses} setBusiness={setBusiness}/>
+            </Route>
+          </Switch>
+        </div>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

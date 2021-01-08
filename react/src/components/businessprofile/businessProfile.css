@@ -35,3 +35,9 @@
     height: auto;
     padding: 30px;
 }
+
+.empty-drop-header {
+    color: rgba(255,255,255,0);
+    font-size: 30px;
+    margin: 5px;
+}

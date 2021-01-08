@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { UserContext } from '../context/UserContext';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
-const Register = ({setAuthenticated,authenticated}) => {
+const Register = () => {
+    const {setAuthenticated, authenticated} = useContext(UserContext)
     return (
         <>
             <div className="login-form-container">

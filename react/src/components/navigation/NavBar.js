@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext, } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import Autocomplete from 'react-google-autocomplete';
@@ -6,16 +6,21 @@ import {searchLocation} from '../../services/businesses'
 import './navBar.css'
 import { Button, HStack } from '@chakra-ui/react';
 import {FaMapMarkerAlt} from 'react-icons/fa'
+import { UserContext } from '../context/UserContext';
 
-const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses }) => {
+const NavBar = () => {
     const [onRegister, setOnRegister] = useState(false)
     const [longitude, setLongitude] = useState("")
     const [latitude, setLatitude] = useState("")
+
+    const {setAuthenticated, authenticated, setUser, user, setBusinesses} = useContext(UserContext)
+    // const context = useContext(UserContext)
 
 
     let history = useHistory()
     let location = useLocation()
     useEffect(() => {
+        // console.log("contexxxxt", setUser)
         if (location.pathname.endsWith("/register")) {
             setOnRegister(true)
         } else {
@@ -23,6 +28,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
         }
         return () => {
         }
+        
     }, [location]);
 
     const checkForReroute = () => {
@@ -36,7 +42,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
         setLongitude(lng)
         setLatitude(lat)
         let res = await searchLocation(lat, lng);
-        console.log(res.result)
+
         setBusinesses(res.result)
         return
     }
@@ -53,7 +59,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
             setLatitude(lat)
             setLongitude(lng)
             let res = await searchLocation(lat, lng);
-            console.log(res.result)
+            // console.log(user)
             setBusinesses(res.result) 
         }, () => ("Your location is not supported by your browser"))
 

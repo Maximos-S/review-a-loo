@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext,} from 'react';
+import { UserContext } from '../context/UserContext';
 import BusinessCard from './BusinessCard';
 import './home.css';
 import Welcome from './Welcome';
 
-const Home = ({businesses, setBusiness}) => {
-
+const Home = () => {
+    const {businesses,} = useContext(UserContext)
     console.log(businesses)
     return (
         <div className="home-main-container">
@@ -14,7 +15,7 @@ const Home = ({businesses, setBusiness}) => {
             <div className="home-business-container">
                 <div className="home-business-header">Restrooms</div>
                 {businesses? businesses.map((business,idx) => (
-                    <BusinessCard key={idx} business={business} setBusiness={setBusiness}/>
+                    <BusinessCard key={idx} business={business}/>
                 )) 
                 :
                 <Welcome />
