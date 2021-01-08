@@ -1,0 +1,40 @@
+.review-form {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.rating {
+    text-align: center;
+}
+.empty-drop {
+    color: grey;
+    font-size: 30px;
+    margin: 5px;
+}
+.one-drop {
+    color: #805e1f;
+    font-size: 30px;
+    margin: 5px;
+}
+.two-drop {
+    color: #a38f46;
+    font-size: 30px;
+    margin: 5px;
+}
+.three-drop {
+    color: #ECC94B;
+    font-size: 30px;
+    margin: 5px;
+}
+.four-drop {
+    color: #8abebe;
+    font-size: 30px;
+    margin: 5px;
+}
+.five-drop {
+    color: #93cee5;
+    font-size: 30px;
+    margin: 5px;
+}

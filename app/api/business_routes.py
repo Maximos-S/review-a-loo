@@ -1,14 +1,14 @@
 from flask import Blueprint, jsonify, request
-from app.forms import RegionSearchForm
+from app.forms import RegionSearchForm, ReviewForm
 from yelpapi import YelpAPI
-from app.models import Business, db
+from app.models import Business, Review, db
 import requests
 import os
 
 yelp_api = YelpAPI(os.environ.get("YELP_API_KEY"))
 business_routes = Blueprint('businesses', __name__)
 
-
+# searches yelp for businesses near coordinates
 @business_routes.route("/", methods=["POST"])
 def searchRegion ():
     form = RegionSearchForm()
@@ -22,7 +22,6 @@ def searchRegion ():
         for business in response["businesses"]:
             business_search = Business.query.filter(Business.yelp_id == business["id"]).first()
             if not business_search:
-                # print("############################", business)
                 business_create = Business(
                     yelp_id = business["id"],
                     name = business["name"],
@@ -45,4 +44,33 @@ def searchRegion ():
         return {"result": business_list}
     return {"error": "There was an error with your location search"}
 
+# creates a review for a business
+@business_routes.route("/<int:id>", methods=["POST"])
+def create_review(id):
+    form = ReviewForm()
 
+    if form.validate_on_submit:
+        review = Review(
+            userId=form.data["userId"],
+            businessId= form.data["businessId"],
+            stars = form.data["stars"],
+            title = form.data["title"],
+            content = form.data["content"],
+        )
+        db.session.add(review)
+        db.session.commit()
+        business = Business.query.filter(Business.id == id).first()
+        count = len(business.to_dict()["reviews"])
+        total_stars = 0
+
+        for review in business.to_dict()["reviews"]:
+            total_stars += review["stars"]
+        avg = total_stars // count
+
+        business.star_avg = avg
+        db.session.add(business)
+        db.session.commit()
+
+        return {"successs": business.to_dict()}
+    else:
+        return {'errors': "Please make sure all the required data is filled out"}, 401

@@ -1,6 +1,5 @@
 from .db import db
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+
 
 class Business(db.Model):
     __tablename__ = 'businesses'
@@ -8,6 +7,7 @@ class Business(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     yelp_id = db.Column(db.String(255), unique=True, nullable=False)
     name = db.Column(db.String(255), nullable=False)
+    star_avg = db.Column(db.Float,)
     image_url = db.Column(db.String(255))
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
@@ -17,13 +17,25 @@ class Business(db.Model):
     display_address = db.Column(db.String(255))
     yelp_url = db.Column(db.String(255))
 
+    reviews = db.relationship('Review', backref="business", lazy="joined")
+
+    @property
+    def get_star_avg(self):
+        return self.star_avg
+
+    @get_star_avg.setter
+    def set_star_avg(self, avg):
+        self.star_avg = avg
+
     def to_dict(self):
         return {
             "id": self.id,
             "yelpId": self.yelp_id,
             "name": self.name,
+            "starAvg": self.star_avg,
             "image": self.image_url,
             "displayAddress": self.display_address,
             "phone": self.phone,
-            "yelpUrl": self.yelp_url
+            "yelpUrl": self.yelp_url,
+            "reviews": [review.to_dict() for review in self.reviews]
         }

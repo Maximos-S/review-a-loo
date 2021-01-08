@@ -8,3 +8,12 @@ export const searchLocation = async(lat, lng) => {
   });
   return await response.json();
 }
+
+export const createReview = async(payload, businessId) => {
+  console.log(payload)
+  const response = await fetch(`/api/businesses/${businessId}`,{
+    method: "post",
+    body: payload
+  })
+  return await response.json();
+}

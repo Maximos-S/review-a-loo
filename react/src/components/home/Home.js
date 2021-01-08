@@ -1,8 +1,9 @@
 import React from 'react';
 import BusinessCard from './BusinessCard';
 import './home.css';
+import Welcome from './Welcome';
 
-const Home = ({businesses}) => {
+const Home = ({businesses, setBusiness}) => {
 
     console.log(businesses)
     return (
@@ -13,10 +14,10 @@ const Home = ({businesses}) => {
             <div className="home-business-container">
                 <div className="home-business-header">Restrooms</div>
                 {businesses? businesses.map((business,idx) => (
-                    <BusinessCard key={idx} business={business} />
+                    <BusinessCard key={idx} business={business} setBusiness={setBusiness}/>
                 )) 
                 :
-                <div>Please search a location</div>
+                <Welcome />
                 }
             </div>
         </div>

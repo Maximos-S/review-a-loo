@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/navigation/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./services/auth";
 import Register from "./components/auth/Register";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
+import BusinessProfile from "./components/businessprofile/BusinessProfile";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [businesses, setBusinesses] = useState(false)
+  const [business, setBusiness] = useState(false)
+  const [user, setUser] = useState(false)
 
   useEffect(() => {
     (async() => {
       const user = await authenticate();
       if (!user.errors) {
+        setUser(user)
         setAuthenticated(true);
       }
       setLoaded(true);
@@ -27,7 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setBusinesses={setBusinesses}/>
+      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} setBusinesses={setBusinesses} setUser={setUser}/>
       <div className="main-content">
         <Switch>
           <Route path="/register" exact={true}>
@@ -35,8 +39,14 @@ function App() {
             setAuthenticated={setAuthenticated} authenticated={authenticated}
             />
           </Route>
+          <Route path="/business/:businessId" exact={true}>
+            <BusinessProfile 
+            setAuthenticated={setAuthenticated} authenticated={authenticated} setBusiness={setBusiness} business={business}
+            user={user}
+            />
+          </Route>
           <Route path="/" exact={true} authenticated={authenticated}>
-            <Home authenticated={authenticated} businesses={businesses}/>
+            <Home authenticated={authenticated} businesses={businesses} setBusiness={setBusiness}/>
           </Route>
         </Switch>
       </div>

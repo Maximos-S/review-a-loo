@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 import Autocomplete from 'react-google-autocomplete';
-import {searchLocation} from '../services/businesses'
+import {searchLocation} from '../../services/businesses'
 import './navBar.css'
+import { Button, HStack } from '@chakra-ui/react';
+import {FaMapMarkerAlt} from 'react-icons/fa'
 
 const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses }) => {
     const [onRegister, setOnRegister] = useState(false)
@@ -23,8 +25,14 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
         }
     }, [location]);
 
+    const checkForReroute = () => {
+        if (location.pathname != "/") {
+            history.push("/")
+        }
+    }
 
     const searchRegion = async (lat,lng) => {
+        checkForReroute()
         setLongitude(lng)
         setLatitude(lat)
         let res = await searchLocation(lat, lng);
@@ -35,6 +43,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
 
     const searchNearMe = async () => {
         // const locationData = new FormData()
+        checkForReroute()
         let lat;
         let lng;
 
@@ -67,20 +76,22 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
                 </div>
             </div>
             <div className="search-bar-container">
-                <Autocomplete
-                    className="search-bar"
-                    style={{}}
-                    onPlaceSelected={(place) => {
-                        if (place.geometry) {
-                            const lat = place.geometry.location.lat()
-                            const lng = place.geometry.location.lng()
-                            searchRegion(lat, lng)
-                        }
-                    }}
-                    types={['(cities)']}
-                    componentRestrictions={{country: "usa"}}
-                />
-                <button onClick={searchNearMe}>Search Near Me</button>
+                <HStack>
+                    <Autocomplete
+                        className="search-bar"
+                        style={{}}
+                        onPlaceSelected={(place) => {
+                            if (place.geometry) {
+                                const lat = place.geometry.location.lat()
+                                const lng = place.geometry.location.lng()
+                                searchRegion(lat, lng)
+                            }
+                        }}
+                        types={['(cities)']}
+                        componentRestrictions={{country: "usa"}}
+                    />
+                    <Button colorScheme="yellow"onClick={searchNearMe}><FaMapMarkerAlt /></Button>
+                </HStack>
             </div>
             <div className="user-buttons">
             {authenticated?
@@ -89,7 +100,7 @@ const NavBar = ({ setAuthenticated, authenticated, setUser, user, setBusinesses 
             </>
             :
             <>
-                {!onRegister && <button className="nav-button" onClick={rerouteRegister}>Register</button>}
+                {!onRegister && <Button className="nav-button" colorScheme="yellow" onClick={rerouteRegister}>Register</Button>}
             </>
             }
             </div>
