@@ -12,6 +12,7 @@ const NavBar = () => {
     const [onRegister, setOnRegister] = useState(false)
     const [longitude, setLongitude] = useState("")
     const [latitude, setLatitude] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     const {setAuthenticated, authenticated, setUser, user, setBusinesses} = useContext(UserContext)
     // const context = useContext(UserContext)
@@ -38,21 +39,24 @@ const NavBar = () => {
     }
 
     const searchRegion = async (lat,lng) => {
+        setIsLoading(!isLoading)
         checkForReroute()
         setLongitude(lng)
         setLatitude(lat)
         let res = await searchLocation(lat, lng);
-
+        
         setBusinesses(res.result)
+        setIsLoading(false)
         return
     }
 
     const searchNearMe = async () => {
         // const locationData = new FormData()
+        setIsLoading(!isLoading)
         checkForReroute()
         let lat;
         let lng;
-
+        
         navigator.geolocation.getCurrentPosition(async (position)=> {
             lat = position.coords.latitude
             lng = position.coords.longitude
@@ -61,8 +65,9 @@ const NavBar = () => {
             let res = await searchLocation(lat, lng);
             // console.log(user)
             setBusinesses(res.result) 
+            setIsLoading(false)
         }, () => ("Your location is not supported by your browser"))
-
+        
     }
 
     const rerouteHome = () => {
@@ -96,7 +101,7 @@ const NavBar = () => {
                         types={['(cities)']}
                         componentRestrictions={{country: "usa"}}
                     />
-                    <Button colorScheme="yellow"onClick={searchNearMe}><FaMapMarkerAlt /></Button>
+                    <Button isLoading={isLoading} colorScheme="yellow"onClick={searchNearMe}><FaMapMarkerAlt /></Button>
                 </HStack>
             </div>
             <div className="user-buttons">

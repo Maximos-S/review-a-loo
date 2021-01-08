@@ -6,13 +6,14 @@ import {MdEdit} from 'react-icons/md'
 import {createReview} from '../../services/businesses'
 import './reviewForm.css'
 import { UserContext } from '../context/UserContext';
+import EditReviewForm from './EditReviewForm';
 
 const ReviewForm = () => {
     const [stars, setStars] = useState(0)
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
-    const {reviews, setReviews, user, business, setBusiness} = useContext(UserContext)
+    const {editReview, setReviews, user, business, setBusiness} = useContext(UserContext)
     
     
     const submitReview = async (e) => {
@@ -50,6 +51,8 @@ const ReviewForm = () => {
     
     return (
         <div className="review-form">
+            {editReview? <EditReviewForm />
+            :
             <Stack>
                 <div className="drop-container">
                     <Rating className="rating"
@@ -57,16 +60,17 @@ const ReviewForm = () => {
                     onClick={updateRating}
                     emptySymbol={<ImDroplet className="empty-drop"/>}
                     fullSymbol={[<ImDroplet className="one-drop"/>,
-                                <ImDroplet className="two-drop"/>,
-                                <ImDroplet className="three-drop"/>,
-                                <ImDroplet className="four-drop"/>,
-                                <ImDroplet className="five-drop"/>,]}
+                    <ImDroplet className="two-drop"/>,
+                    <ImDroplet className="three-drop"/>,
+                    <ImDroplet className="four-drop"/>,
+                    <ImDroplet className="five-drop"/>,]}
                     />
                 </div>
                 <Input variant="filled" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)}/>
                 <Textarea variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
                 <Button colorScheme="yellow" onClick={submitReview} >Submit</Button>
             </Stack>
+            }
         </div>
     );
 };

@@ -17,6 +17,10 @@ export const createReview = async(payload, businessId) => {
   return await response.json();
 }
 
+export const editReview = async(payload, userId) => {
+  
+}
+
 export const getBusiness = async(businessId) => {
   const response = await fetch(`/api/businesses/${businessId}`)
   return await response.json();
