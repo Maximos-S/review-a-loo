@@ -3,6 +3,7 @@ from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired
 
 class ReviewForm(FlaskForm):
+    id = IntegerField("reviewId",)
     stars = IntegerField("stars", validators=[DataRequired()])
     businessId = IntegerField("businessId", validators=[DataRequired()])
     userId = IntegerField("userId", validators=[DataRequired()])

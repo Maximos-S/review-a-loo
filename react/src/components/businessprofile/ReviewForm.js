@@ -1,4 +1,4 @@
-import React, {useState,useContext} from 'react';
+import React, {useState,useContext,useEffect,} from 'react';
 import {Stack, Input, Button, Textarea, IconButton} from '@chakra-ui/react'
 import Rating from 'react-rating'
 import {ImDroplet} from 'react-icons/im'
@@ -13,14 +13,26 @@ const ReviewForm = () => {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
-    const {editReview, setReviews, user, business, setBusiness} = useContext(UserContext)
+    const {setEditReview, editReview, setReviews, user, business, setBusiness} = useContext(UserContext)
     
+    useEffect(() => {
+        if (editReview) {
+            setStars(editReview.stars)
+            setTitle(editReview.title)
+            setContent(editReview.content)
+        }
+        return () => {
+        }
+    }, [editReview]);
     
     const submitReview = async (e) => {
         e.preventDefault()
 
         if (title && content && stars) {
             const data = new FormData();
+            if (editReview) {
+                data.append("reviewId", editReview.id)
+            }
             data.append("userId", user.id)
             data.append("businessId", business.id)
             data.append("stars", stars)
@@ -30,9 +42,15 @@ const ReviewForm = () => {
             setTitle("")
             setContent("")
             setStars(0)
-            const res = await createReview(data, business.id)
+            let res;
+            if (editReview) {
+                res = await editReview(data, business.id,)
+            } else {
+                res = await createReview(data, business.id)
+            }
             setReviews(res.business.reviews)
             setBusiness(res.business)
+            setEditReview(false)
         }
 
     }

@@ -4,6 +4,8 @@ from yelpapi import YelpAPI
 from app.models import Business, Review, db
 import requests
 import os
+from flask_login import current_user,
+
 
 yelp_api = YelpAPI(os.environ.get("YELP_API_KEY"))
 business_routes = Blueprint('businesses', __name__)
@@ -83,3 +85,10 @@ def create_review(id):
         return {"business": business.to_dict()}
     else:
         return {'errors': "Please make sure all the required data is filled out"}, 401
+
+#edit review
+@business_routes.route("/<int:id>", methods=["PATCH"])
+def editReview(id):
+    form = ReviewForm()
+    if current_user.id = form.data["userId"]
+    pass
