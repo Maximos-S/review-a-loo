@@ -1,5 +1,5 @@
 import { IconButton } from '@chakra-ui/react';
-import React, {useContext,} from 'react';
+import React, {useContext,useEffect,} from 'react';
 import { ImDroplet } from 'react-icons/im';
 import { MdEdit } from 'react-icons/md';
 import Rating from 'react-rating'
@@ -7,7 +7,15 @@ import { UserContext } from '../context/UserContext';
 import './reviewCard.css'
 
 const ReviewCard = ({review}) => {
-    const {user, setEditReview} = useContext(UserContext)
+    const {user, setEditReview, setBusiness, setReviews} = useContext(UserContext)
+
+    useEffect(() => {
+        return () => {
+            setEditReview(false)
+            setBusiness(false)
+            setReviews(false)
+        }
+    }, []);
 
     const editReview = () => {
         setEditReview(review)

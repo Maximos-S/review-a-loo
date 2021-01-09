@@ -10,7 +10,7 @@ import ReviewForm from './ReviewForm';
 
 const BusinessProfile = () => {
     const {businessId} = useParams();
-    const {reviews, user, authenticated, business, setBusiness, setReviews} = useContext(UserContext)
+    const {reviews, user, authenticated, business, setBusiness, setReviews, setEditReview} = useContext(UserContext)
 
     useEffect(async () => {
         console.log("usee effect")
@@ -22,8 +22,12 @@ const BusinessProfile = () => {
            setReviews(res.business.reviews)
         }
         return () => {
+            console.log("componentwillunmount?")
+            setEditReview(false)
+            setBusiness(false)
+            setReviews(false)
         }
-    }, []);
+    });
 
     return (
         <div className="profile-container">
