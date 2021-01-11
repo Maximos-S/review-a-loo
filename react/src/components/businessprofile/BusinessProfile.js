@@ -7,6 +7,7 @@ import { UserContext } from '../context/UserContext';
 import './businessProfile.css'
 import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
+import { Stack } from '@chakra-ui/react';
 
 const BusinessProfile = () => {
     const {businessId} = useParams();
@@ -33,7 +34,11 @@ const BusinessProfile = () => {
         <div className="profile-container">
             <div className="header-container">
                 <img className="business-image-header" src={business.image} alt="business" />
-                <div>{business.name}</div>
+                <Stack className="business-header-info">
+                    <div className="business-header-title">{business.name}</div>
+                    <div>{business.displayAddress}</div>
+                    <div>{business.phone}</div>
+                </Stack>
                 <Rating className="rating"
                 initialRating={business.starAvg}
                 readonly

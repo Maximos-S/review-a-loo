@@ -85,7 +85,6 @@ const NavBar = () => {
 
             <div className="logo">
                 <div className="home-link" onClick={rerouteHome}>
-                Review-a-Loo
                 </div>
             </div>
             <div className="search-bar-container">

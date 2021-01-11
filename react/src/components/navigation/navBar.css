@@ -42,7 +42,7 @@
 
 .search-bar {
     border: none;
-    background-color: lavender;
+    background-color: #f3f0e3;
     text-align: center;
     height: 30px;
     width: 500px;
@@ -52,11 +52,22 @@
 
 .home-link {
     cursor: pointer;
+    position: absolute;
+    top: 9px;
+    left: 35px;
+    width: 150px;
+    height: 79px;
     font-size: 30px;
     font-family: Fraunces, serif;
     font-style: italic;
     font-weight: 900;
-    color: #472820;
+    color: #f3f0e3;
+    background-size: cover;
+    background-image: url("../../static/review-logo.png");
+    
+    z-index: 3;
+        object-fit: cover;
+        object-position: 50% 20%;
 }
 
 .home-link:hover {

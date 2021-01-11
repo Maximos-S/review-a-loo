@@ -48,4 +48,13 @@
 .review-form {
     position: sticky;
     top: 70px;
+    min-width: 300px;
+}
+
+.title-input {
+    min-width: 200px;
+}
+
+.content-input {
+    min-width: 300px;
 }

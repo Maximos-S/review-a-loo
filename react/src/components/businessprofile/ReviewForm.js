@@ -82,8 +82,8 @@ const ReviewForm = () => {
                     <ImDroplet className="five-drop"/>,]}
                     />
                 </div>
-                <Input variant="filled" placeholder="Title" placeholder={editReview ? editReview.title : "Title"}value={title} onChange={e => setTitle(e.target.value)}/>
-                <Textarea variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
+                <Input className="title-input" variant="filled" placeholder="Title" placeholder={editReview ? editReview.title : "Title"}value={title} onChange={e => setTitle(e.target.value)}/>
+                <Textarea className="content-input" variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
                 <Button colorScheme="yellow" onClick={submitReview} >Submit</Button>
             </Stack>
         </div>

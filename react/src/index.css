@@ -21,3 +21,12 @@ body {
 div {
     box-sizing: border-box;
 }
+
+p {
+    font-size: 20px;
+}
+
+button {
+    color: #f3f0e3;
+    font-family: Fraunces, serif;
+}
