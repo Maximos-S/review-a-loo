@@ -11,7 +11,7 @@
     position: sticky;
     top: 0;
     z-index: 3;
-    background-color: #a38f46;
+    background-color: #a38246;
 }
 
 
@@ -19,7 +19,7 @@
     position: absolute;
     bottom: 100px;
     stroke: none;
-    fill: #a38f46;
+    fill: #a38246;
     z-index: 2;
 }
 .wave-svg {

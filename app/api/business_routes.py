@@ -124,3 +124,16 @@ def editReview(id):
 
         return {"business": business.to_dict()}
     return {"errors": "Must be logged in to edit review"}
+
+# delete a review
+
+@business_routes.route("/<int:businessId>/reviews/<int:reviewId>", methods=["DELETE"])
+def deleteReview(businessId, reviewId):
+    review = Review.query.filter(Review.id == reviewId).first()
+    
+    if current_user.id == review.userId:
+        db.session.delete(review)
+        db.session.commit()
+        print("############deleted##########    ")
+    business = Business.query.filter(Business.id == businessId).first()
+    return {"business": business.to_dict()}

@@ -18,12 +18,17 @@ export const createReview = async(payload, businessId) => {
 }
 
 export const patchReview = async(payload, businessId, ) => {
-  console.log("yessirssskeeeee",businessId)
   const response = await fetch(`/api/businesses/${businessId}`, {
     method: 'PATCH',
     body: payload
   })
-  console.log("heeeelllloooo")
+  return await response.json()
+}
+
+export const deleteReview = async(reviewId, businessId) => {
+  const response = await fetch(`/api/businesses/${businessId}/reviews/${reviewId}`, {
+    method: 'DELETE',
+  })
   return await response.json()
 }
 

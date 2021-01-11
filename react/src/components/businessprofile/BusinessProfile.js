@@ -14,19 +14,12 @@ const BusinessProfile = () => {
     const {reviews, user, authenticated, business, setBusiness, setReviews, setEditReview} = useContext(UserContext)
 
     useEffect(async () => {
-        console.log("usee effect")
         if (!business) {
-            console.log("not business")
            const res = await getBusiness(businessId)
-           console.log("reeessss", res.business.starAvg)
            setBusiness(res.business)
            setReviews(res.business.reviews)
         }
         return () => {
-            console.log("componentwillunmount?")
-            setEditReview(false)
-            setBusiness(false)
-            setReviews(false)
         }
     });
 

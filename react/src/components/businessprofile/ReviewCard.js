@@ -1,24 +1,42 @@
-import { IconButton } from '@chakra-ui/react';
+import { HStack, IconButton } from '@chakra-ui/react';
 import React, {useContext,useEffect,} from 'react';
+import { FaToilet } from 'react-icons/fa';
 import { ImDroplet } from 'react-icons/im';
 import { MdEdit } from 'react-icons/md';
 import Rating from 'react-rating'
+import { deleteReview } from '../../services/businesses';
 import { UserContext } from '../context/UserContext';
 import './reviewCard.css'
 
 const ReviewCard = ({review}) => {
-    const {user, setEditReview, setBusiness, setReviews} = useContext(UserContext)
+    const {user, setEditReview, setBusiness, setReviews, reviews, business, businesses, setBusinesses} = useContext(UserContext)
 
     useEffect(() => {
         return () => {
-            setEditReview(false)
-            setBusiness(false)
-            setReviews(false)
+
         }
     }, []);
 
     const editReview = () => {
         setEditReview(review)
+    }
+
+    const destroyReview = async () => {
+        const res = await deleteReview(review.id, business.id)
+        let updatedBusinesses;
+        if (businesses) {
+            updatedBusinesses = businesses.map( bznz => {
+                if (bznz.id === res.business.id) {
+                    return res.business
+                } else {
+                    return bznz
+                }
+            })
+            setBusinesses(updatedBusinesses)
+        }
+        setReviews(res.business.reviews)
+        setBusiness(res.business)
+
     }
     return (
         <div className="review-border">
@@ -39,9 +57,12 @@ const ReviewCard = ({review}) => {
                         <ImDroplet className="four-star"/>,
                         <ImDroplet className="five-star"/>,]}
                         />
-                    {user.id === review.userId && <IconButton aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
-                    }
                 </div>
+                    {user.id === review.userId && <HStack>
+                        <IconButton title="edit" colorScheme="yellow" aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
+                        <IconButton title="delete" colorScheme="yellow" aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
+                    </HStack>
+                    }
             </div>
             <div className="review-content">
                     {review.content}

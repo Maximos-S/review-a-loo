@@ -45,7 +45,7 @@ function App() {
               />
             </Route>
             <Route path="/business/:businessId" exact={true}>
-              <BusinessProfile 
+              <BusinessProfile
               // setAuthenticated={setAuthenticated} authenticated={authenticated} setBusiness={setBusiness} business={business}
               // user={user}
               />
