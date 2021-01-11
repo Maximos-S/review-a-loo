@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
@@ -77,7 +78,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <Button type="submit">Sign Up</Button>
     </form>
   );
 };

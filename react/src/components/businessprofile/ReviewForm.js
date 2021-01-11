@@ -12,7 +12,7 @@ const ReviewForm = () => {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
-    const {setEditReview, editReview, setReviews, user, business, setBusiness} = useContext(UserContext)
+    const {setEditReview, editReview, setReviews, user, business, setBusiness, setBusinesses, businesses} = useContext(UserContext)
     
     useEffect(() => {
         if (editReview) {
@@ -37,7 +37,6 @@ const ReviewForm = () => {
             data.append("stars", stars)
             data.append("title", title)
             data.append("content", content)
-            console.log("datatata", data)
             setTitle("")
             setContent("")
             setStars(0)
@@ -47,6 +46,17 @@ const ReviewForm = () => {
             } else {
                 res = await createReview(data, business.id)
             }
+
+            let updatedBusinesses;
+            if (businesses) {
+                updatedBusinesses = businesses.map( bznz => {                    if (bznz.id === res.business.id) {
+                        return res.business
+                    }
+                    return bznz
+                })
+            }
+            setBusinesses(updatedBusinesses)
+
             setReviews(res.business.reviews)
             setBusiness(res.business)
             setEditReview(false)
