@@ -81,6 +81,8 @@ const NavBar = () => {
 
     return (
         <nav className="nav-bar">
+                    <div className="wave" ><svg className="wave-svg"viewBox="0 0 500 150" preserveAspectRatio="none"><path className="wave-path" d="M-28.21,75.48 C63.76,143.58 204.85,-2.45 505.64,93.25 L500.00,0.00 L0.00,0.00 Z"></path></svg></div>
+
             <div className="logo">
                 <div className="home-link" onClick={rerouteHome}>
                 Review-a-Loo

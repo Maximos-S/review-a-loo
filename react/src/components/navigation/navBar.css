@@ -10,44 +10,34 @@
     padding-left: 30px;
     position: sticky;
     top: 0;
-    z-index: 2;
-    background-color: white;
+    z-index: 3;
+    background-color: #a38f46;
 }
 
 
 .wave-path {
     position: absolute;
-   bottom: 100px;
+    bottom: 100px;
     stroke: none;
-    fill: #08f;
+    fill: #a38f46;
     z-index: 2;
 }
 .wave-svg {
     height: 100%;
-    width: 100%;
+    width: 100vw;
+    z-index: 0;
+    
+    /* background-color: goldenrod; */
 }
 
 .wave {
     height: 150px;
     overflow: hidden;
+    position: absolute;
+    top: 10px;
+    left: 0px;
 }
 
-.nav-bar--top {
-}
-
-.nav-bar--top::before,
-.nav-bar--top::after {
-    bottom: auto;
-    top: 0;
-}
-
-.nav-bar--top::before {
-    background-image: radial-gradient(circle at 10px 15px, transparent 12px, white 13px);
-}
-
-.nav-bar--top::after {
-    background-image: radial-gradient(circle at 10px 0, white 12px, transparent 13px);
-}
 
 
 .search-bar {
@@ -56,12 +46,17 @@
     text-align: center;
     height: 30px;
     width: 500px;
+    z-index: 1;
 }
 
 
 .home-link {
     cursor: pointer;
     font-size: 30px;
+    font-family: Fraunces, serif;
+    font-style: italic;
+    font-weight: 900;
+    color: #472820;
 }
 
 .home-link:hover {
@@ -77,6 +72,7 @@
     width: 30%;
     display: flex;
     justify-content: center;
+    z-index: 2;
 }
 
 .user-buttons>a {

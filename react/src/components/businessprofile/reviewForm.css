@@ -14,7 +14,7 @@
     margin: 5px;
 }
 .one-drop {
-    color: #805e1f;
+    color: #472820;
     font-size: 30px;
     margin: 5px;
 }
@@ -39,21 +39,13 @@
     margin: 5px;
 }
 
-.edit-hidden {
-    display: none;
-}
-
-.edit-visible {
-    display: block;
-}
-
-.edit {
-    cursor: pointer;
-    color: #805e1f;
-    font-size: 20px;
-}
 
 .drop-container {
     display: flex;
     align-items: center;
+}
+
+.review-form {
+    position: sticky;
+    top: 70px;
 }

@@ -4,7 +4,7 @@
     height:auto;
     background-color: #f3f0e3;
     padding: 20px;
-    /* border: solid 3px #805e1f; */
+    /* border: solid 3px #472820; */
     border-radius: 5px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .one-star {
-    color: #805e1f;
+    color: #472820;
     font-size: 20px;
     margin: 2px;
 }
