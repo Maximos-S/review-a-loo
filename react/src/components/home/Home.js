@@ -13,7 +13,6 @@ const Home = () => {
                 <div className="home-map-header">Map</div>
             </div>
             <div className="home-business-container">
-                <div className="home-business-header">Restrooms</div>
                 {businesses? businesses.map((business,idx) => (
                     <BusinessCard key={idx} business={business}/>
                 )) 

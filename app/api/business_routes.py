@@ -4,7 +4,7 @@ from yelpapi import YelpAPI
 from app.models import Business, Review, db
 import requests
 import os
-from flask_login import current_user,
+from flask_login import current_user
 
 
 yelp_api = YelpAPI(os.environ.get("YELP_API_KEY"))
@@ -23,7 +23,16 @@ def searchRegion ():
         business_list = []
         for business in response["businesses"]:
             business_search = Business.query.filter(Business.yelp_id == business["id"]).first()
+
+
             if not business_search:
+                formatAddress = ""
+
+                for line in business["location"]["display_address"]:
+                    formatAddress += line
+
+
+                
                 business_create = Business(
                     yelp_id = business["id"],
                     name = business["name"],
@@ -33,7 +42,7 @@ def searchRegion ():
                     address = business["location"]["address1"],
                     city = business["location"]["city"],
                     phone = business["display_phone"],
-                    display_address = business["location"]["display_address"],
+                    display_address = formatAddress,
                     yelp_url = business["url"]
                 )
                 db.session.add(business_create)
@@ -81,7 +90,6 @@ def create_review(id):
         business.star_avg = avg
         db.session.add(business)
         db.session.commit()
-        print("#######this is businesssss!!!#####", business.to_dict())
         return {"business": business.to_dict()}
     else:
         return {'errors': "Please make sure all the required data is filled out"}, 401
@@ -90,5 +98,29 @@ def create_review(id):
 @business_routes.route("/<int:id>", methods=["PATCH"])
 def editReview(id):
     form = ReviewForm()
-    if current_user.id = form.data["userId"]
-    pass
+    if current_user.id == form.data["userId"]:
+        # print("####form.data[]", form.data)
+        review = Review.query.filter(Review.id == form.data["reviewId"]).first()
+        review.stars = form.data["stars"]
+        review.title = form.data["title"]
+        review.content = form.data["content"]
+
+        db.session.add(review)
+        db.session.commit()
+
+        # find business and update star avg and return
+        business = Business.query.filter(Business.id == id).first()
+
+        count = len(business.to_dict()["reviews"])
+        total_stars = 0
+
+        for review in business.to_dict()["reviews"]:
+            total_stars += review["stars"]
+        avg = total_stars // count
+
+        business.star_avg = avg
+        db.session.add(business)
+        db.session.commit()
+
+        return {"business": business.to_dict()}
+    return {"errors": "Must be logged in to edit review"}

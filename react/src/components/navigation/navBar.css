@@ -12,8 +12,43 @@
     top: 0;
     z-index: 2;
     background-color: white;
-    border-bottom: solid 2px brown;
 }
+
+
+.wave-path {
+    position: absolute;
+   bottom: 100px;
+    stroke: none;
+    fill: #08f;
+    z-index: 2;
+}
+.wave-svg {
+    height: 100%;
+    width: 100%;
+}
+
+.wave {
+    height: 150px;
+    overflow: hidden;
+}
+
+.nav-bar--top {
+}
+
+.nav-bar--top::before,
+.nav-bar--top::after {
+    bottom: auto;
+    top: 0;
+}
+
+.nav-bar--top::before {
+    background-image: radial-gradient(circle at 10px 15px, transparent 12px, white 13px);
+}
+
+.nav-bar--top::after {
+    background-image: radial-gradient(circle at 10px 0, white 12px, transparent 13px);
+}
+
 
 .search-bar {
     border: none;

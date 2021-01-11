@@ -20,38 +20,37 @@ const BusinessCard = ({business,}) => {
         history.push(`/business/${business.id}`)
     }
 
-
     return (
         <div className="business-card-container">
             <div className="business-image-container">
                 <img className="business-image" src={business.image} alt="business"/>
             </div>
             <div className="business-info-container">
-                <div className="business-title">
+                <div className="business-card-header">
                     <div>{business.name}</div>
-                </div>
-                {business.starAvg?
-                <Rating 
+                    {business.starAvg?
+                    <Rating 
                     initialRating={business.starAvg}
                     readonly
                     emptySymbol={<ImDroplet className="empty-star"/>}
                     fullSymbol={[<ImDroplet className="one-star"/>,
-                                <ImDroplet className="two-star"/>,
-                                <ImDroplet className="three-star"/>,
-                                <ImDroplet className="four-star"/>,
-                                <ImDroplet className="five-star"/>,]}
-                />
-                :
-                <div> No reviews yet</div>
-                }
-                <div>
-                    <Button colorScheme="yellow" onClick={rerouteBusinessProfile}>Leave a Review</Button>
+                    <ImDroplet className="two-star"/>,
+                    <ImDroplet className="three-star"/>,
+                    <ImDroplet className="four-star"/>,
+                    <ImDroplet className="five-star"/>,]}
+                    />
+                    :
+                    <div> No reviews yet</div>
+                    }
+                    <div>
+                        <Button colorScheme="yellow" onClick={rerouteBusinessProfile}>Leave a Review</Button>
+                    </div>
                 </div>
-                <div className="business-info">
-                    <div>{business.displayAddress}</div>
-                    <div>{business.phone}</div>
-                    <a href={business.url}>Yelp Link</a>
-                </div>
+            <div className="business-info">
+                <div>{business.displayAddress}</div>
+                <div>{business.phone}</div>
+                <a href={business.url}>Yelp Link</a>
+            </div>
             </div>
         </div>
     );

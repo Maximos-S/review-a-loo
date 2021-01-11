@@ -21,6 +21,7 @@ const ReviewCard = ({review}) => {
         setEditReview(review)
     }
     return (
+        <div className="review-border">
         <div className="review-container">
             <div className="star-container">
                 <div className="review-title">
@@ -33,11 +34,11 @@ const ReviewCard = ({review}) => {
                         readonly
                         emptySymbol={<ImDroplet className="empty-star"/>}
                         fullSymbol={[<ImDroplet className="one-star"/>,
-                                    <ImDroplet className="two-star"/>,
-                                    <ImDroplet className="three-star"/>,
-                                    <ImDroplet className="four-star"/>,
-                                    <ImDroplet className="five-star"/>,]}
-                    />
+                        <ImDroplet className="two-star"/>,
+                        <ImDroplet className="three-star"/>,
+                        <ImDroplet className="four-star"/>,
+                        <ImDroplet className="five-star"/>,]}
+                        />
                     {user.id === review.userId && <IconButton aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
                     }
                 </div>
@@ -45,6 +46,7 @@ const ReviewCard = ({review}) => {
             <div className="review-content">
                     {review.content}
             </div>
+        </div>
         </div>
     );
 };

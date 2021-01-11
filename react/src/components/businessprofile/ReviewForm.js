@@ -3,10 +3,9 @@ import {Stack, Input, Button, Textarea, IconButton} from '@chakra-ui/react'
 import Rating from 'react-rating'
 import {ImDroplet} from 'react-icons/im'
 import {MdEdit} from 'react-icons/md'
-import {createReview} from '../../services/businesses'
+import {createReview, patchReview} from '../../services/businesses'
 import './reviewForm.css'
 import { UserContext } from '../context/UserContext';
-import EditReviewForm from './EditReviewForm';
 
 const ReviewForm = () => {
     const [stars, setStars] = useState(0)
@@ -44,7 +43,7 @@ const ReviewForm = () => {
             setStars(0)
             let res;
             if (editReview) {
-                res = await editReview(data, business.id,)
+                res = await patchReview(data, business.id,)
             } else {
                 res = await createReview(data, business.id)
             }

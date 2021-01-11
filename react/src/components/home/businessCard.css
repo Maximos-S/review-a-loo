@@ -1,15 +1,33 @@
 .business-card-container {
-    width: 100%;
-    height: 150px;
+    width: 80%;
+    min-width: 500px;
+    height: 200px;
     padding: 20px;
     display: flex;
+
     align-items: center;
 }
 
+.business-image-container {
+    margin: 10px;
+    width: 100px;
+}
 
 .business-image {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     object-position: 50% 20%;
 }
+
+.business-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.business-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+

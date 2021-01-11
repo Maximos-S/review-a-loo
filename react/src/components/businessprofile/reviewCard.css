@@ -1,7 +1,22 @@
 .review-container {
-    margin: 30px;
-    width: 600px;
-    border: solid 3px brown;
+    width: 100%;
+    margin: 5px;
+    height:auto;
+    background-color: #f3f0e3;
+    padding: 20px;
+    /* border: solid 3px #805e1f; */
+    border-radius: 5px;
+}
+
+.review-border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:80%;
+    height: auto;
+    margin: 10px;
+    border: 3px solid #472820;
+    border-radius: 5px;
 }
 
 .star-container {
