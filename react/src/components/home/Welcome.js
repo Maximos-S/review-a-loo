@@ -1,5 +1,6 @@
 import React from 'react';
 import './welcome.css'
+import plant from '../../static/plant.svg'
 
 const Welcome = () => {
     return (
@@ -11,6 +12,7 @@ const Welcome = () => {
                 Review a loo is your hub for the scoop on the poop! Don't know your city as well as George Costanza?
                 No problem! We have all the dirty deets right here.
             </p>
+            <img src={plant} alt="plant" />
         </div>
     );
 };

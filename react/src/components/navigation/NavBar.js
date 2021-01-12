@@ -7,7 +7,7 @@ import './navBar.css'
 import { Button, HStack } from '@chakra-ui/react';
 import {FaMapMarkerAlt} from 'react-icons/fa'
 import { UserContext } from '../context/UserContext';
-import navWave from '../../static/navbar.svg'
+import navWave from '../../static/wave.svg'
 
 const NavBar = () => {
     const [onRegister, setOnRegister] = useState(false)
