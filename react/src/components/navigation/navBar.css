@@ -11,7 +11,32 @@
     position: sticky;
     top: 0;
     z-index: 3;
-    background-color: #a38246;
+    background-color: #9a7d41;
+}
+
+
+.wave-line-path {
+    position: absolute;
+    bottom: 100px;
+    /* stroke: white; */
+    stroke-width: 3px;
+    fill: transparent;
+    z-index: 3;
+}
+.wave-line-svg {
+    height: 100%;
+    width: 100vw;
+    z-index: 0;
+    
+    /* background-color: goldenrod; */
+}
+
+.wave-line {
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: -20px;
+    left: 0px;
 }
 
 
