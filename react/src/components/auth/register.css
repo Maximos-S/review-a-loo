@@ -1,3 +1,17 @@
 .register-container {
     padding: 50px;
+    display: flex;
+}
+
+.login-form-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-up-form-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

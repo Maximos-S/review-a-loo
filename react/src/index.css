@@ -7,6 +7,7 @@ body {
 }
 
 .main-content {
+    position: relative;
     padding-top: 30px;
     width: 100%;
     height: 100%;
@@ -27,6 +28,7 @@ p {
 }
 
 button {
-    color: #f3f0e3;
+    color: #472820;
+    background-color: #ECC94B;
     font-family: Fraunces, serif;
 }

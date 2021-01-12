@@ -7,6 +7,7 @@ import { UserContext } from '../context/UserContext';
 import './businessProfile.css'
 import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
+import Map from '../home/Map'
 import { Stack } from '@chakra-ui/react';
 
 const BusinessProfile = () => {
@@ -49,12 +50,15 @@ const BusinessProfile = () => {
                         <ReviewCard key={idx} review={review} />
                         ))}
                 </div>
-                <div className="review-form-container">
-                    {authenticated? 
-                    <ReviewForm user={user} />
-                    :
-                    <div>Login in to leave reviews</div>
-                    }
+                <div className="review-map-wrapper">
+                    <div className="review-form-container">
+                        {authenticated? 
+                        <ReviewForm user={user} />
+                        :
+                        <div>Login in to leave reviews</div>
+                        }
+                    </div>
+                    <Map />
                 </div>
             </div>
         </div>

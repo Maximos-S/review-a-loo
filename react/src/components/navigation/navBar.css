@@ -18,7 +18,6 @@
 .wave-line-path {
     position: absolute;
     bottom: 100px;
-    /* stroke: white; */
     stroke-width: 3px;
     fill: transparent;
     z-index: 3;

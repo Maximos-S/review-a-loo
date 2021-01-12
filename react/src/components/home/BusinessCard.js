@@ -2,6 +2,7 @@ import { Button } from '@chakra-ui/react';
 import React, {useContext, } from 'react';
 import Rating from 'react-rating'
 import { ImDroplet } from 'react-icons/im';
+import Animista, {AnimistaTypes} from 'react-animista'
 
 
 import {useHistory} from 'react-router-dom'
@@ -21,7 +22,7 @@ const BusinessCard = ({business,}) => {
     }
 
     return (
-        <div className="business-card-container">
+        <Animista  type={AnimistaTypes.SCALE_UP_RIGHT} className="business-card-container">
             <div className="business-image-container">
                 <img className="business-image" src={business.image} alt="business"/>
             </div>
@@ -43,7 +44,7 @@ const BusinessCard = ({business,}) => {
                     <div> No reviews yet</div>
                     }
                     <div>
-                        <Button colorScheme="yellow" onClick={rerouteBusinessProfile}>Leave a Review</Button>
+                        <Button onClick={rerouteBusinessProfile}>Leave a Review</Button>
                     </div>
                 </div>
             <div className="business-info">
@@ -52,7 +53,7 @@ const BusinessCard = ({business,}) => {
                 <a href={business.url}>Yelp Link</a>
             </div>
             </div>
-        </div>
+        </Animista>
     );
 };
 

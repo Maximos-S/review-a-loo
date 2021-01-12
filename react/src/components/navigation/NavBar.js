@@ -11,11 +11,11 @@ import navWave from '../../static/navbar.svg'
 
 const NavBar = () => {
     const [onRegister, setOnRegister] = useState(false)
-    const [longitude, setLongitude] = useState("")
-    const [latitude, setLatitude] = useState("")
+    // const [longitude, setLongitude] = useState("")
+    // const [latitude, setLatitude] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const {setAuthenticated, authenticated, setUser, user, setBusinesses} = useContext(UserContext)
+    const {setAuthenticated, authenticated, setUser, user, setBusinesses, mapCoordinates, setMapCoordinates} = useContext(UserContext)
     // const context = useContext(UserContext)
 
 
@@ -42,9 +42,10 @@ const NavBar = () => {
     const searchRegion = async (lat,lng) => {
         setIsLoading(!isLoading)
         checkForReroute()
-        setLongitude(lng)
-        setLatitude(lat)
+        // setLongitude(lng)
+        // setLatitude(lat)
         let res = await searchLocation(lat, lng);
+        setMapCoordinates({lat, lng})
         
         setBusinesses(res.result)
         setIsLoading(false)
@@ -61,8 +62,8 @@ const NavBar = () => {
         navigator.geolocation.getCurrentPosition(async (position)=> {
             lat = position.coords.latitude
             lng = position.coords.longitude
-            setLatitude(lat)
-            setLongitude(lng)
+            // setLatitude(lat)
+            // setLongitude(lng)
             let res = await searchLocation(lat, lng);
             // console.log(user)
             setBusinesses(res.result) 
@@ -104,7 +105,7 @@ const NavBar = () => {
                         types={['(cities)']}
                         componentRestrictions={{country: "usa"}}
                     />
-                    <Button isLoading={isLoading} colorScheme="yellow"onClick={searchNearMe}><FaMapMarkerAlt /></Button>
+                    <Button isLoading={isLoading} onClick={searchNearMe}><FaMapMarkerAlt /></Button>
                 </HStack>
             </div>
             <div className="user-buttons">
@@ -114,7 +115,7 @@ const NavBar = () => {
             </>
             :
             <>
-                {!onRegister && <Button className="nav-button" colorScheme="yellow" onClick={rerouteRegister}>Register</Button>}
+                {!onRegister && <Button className="nav-button"  onClick={rerouteRegister}>Register</Button>}
             </>
             }
             </div>

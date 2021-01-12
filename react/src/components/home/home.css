@@ -1,20 +1,34 @@
 .home-main-container {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+}
+
+.home-map-wrapper {
+    position: fixed;
+    top: 150px;
+    left: 30px;
+    height: 80%;
+    width: 400px;
 }
 
 .home-map-container {
-    width: 40%;
+    width: 30%;
     min-width: 450px;
-    height: 100%;
+    height: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
 }
 
 .home-business-container {
-    width: 60%;
+    width: 70%;
     min-width: 675px;
     height: 100%;
     overflow-y: scroll;
+    padding: 20px;
 }
 
 

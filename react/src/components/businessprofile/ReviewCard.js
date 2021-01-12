@@ -59,8 +59,8 @@ const ReviewCard = ({review}) => {
                         />
                 </div>
                     {user.id === review.userId && <HStack>
-                        <IconButton title="edit" colorScheme="yellow" aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
-                        <IconButton title="delete" colorScheme="yellow" aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
+                        <IconButton title="edit"  aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
+                        <IconButton title="delete"  aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
                     </HStack>
                     }
             </div>

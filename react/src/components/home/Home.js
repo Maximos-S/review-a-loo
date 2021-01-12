@@ -1,8 +1,10 @@
 import React, {useContext,} from 'react';
 import { UserContext } from '../context/UserContext';
 import BusinessCard from './BusinessCard';
+import Map from './Map';
 import './home.css';
 import Welcome from './Welcome';
+
 
 const Home = () => {
     const {businesses,} = useContext(UserContext)
@@ -10,7 +12,9 @@ const Home = () => {
     return (
         <div className="home-main-container">
             <div className="home-map-container">
-                <div className="home-map-header">Map</div>
+                <div className="home-map-wrapper">
+                        <Map />
+                </div>
             </div>
             <div className="home-business-container">
                 {businesses ? businesses.map((business,idx) => (

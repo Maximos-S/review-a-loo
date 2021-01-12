@@ -16,6 +16,8 @@ function App() {
   const [user, setUser] = useState(false)
   const [reviews, setReviews] = useState([])
   const [editReview, setEditReview] = useState(false)
+  const [mapCoordinates, setMapCoordinates] = useState(false)
+
   useEffect(() => {
     (async() => {
       const user = await authenticate();
@@ -35,7 +37,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={ {editReview, setEditReview,user,setUser, authenticated, setAuthenticated, setBusiness, business, setBusinesses, businesses, reviews, setReviews} }>
+      <UserContext.Provider value={ {
+        editReview, setEditReview,
+        user,setUser, 
+        authenticated, setAuthenticated, 
+        setBusiness, business, 
+        setBusinesses, businesses, 
+        reviews, setReviews,
+        mapCoordinates, setMapCoordinates
+        } }>
         <NavBar />
         <div className="main-content">
           <Switch>

@@ -1,3 +1,4 @@
+import { Stack,Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
@@ -31,24 +32,23 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <form onSubmit={onLogin}>
-      <div>
+      <Stack>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
-      </div>
-      <div>
+      </Stack>
+      <Stack>
         <label htmlFor="email">Email</label>
-        <input
+        <Input
           name="email"
           type="text"
           placeholder="Email"
           value={email}
           onChange={updateEmail}
         />
-      </div>
-      <div>
+
         <label htmlFor="password">Password</label>
-        <input
+        <Input
           name="password"
           type="password"
           placeholder="Password"
@@ -56,7 +56,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updatePassword}
         />
         <button type="submit">Login</button>
-      </div>
+      </Stack>
     </form>
   );
 };

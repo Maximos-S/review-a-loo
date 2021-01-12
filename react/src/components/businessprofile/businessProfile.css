@@ -30,7 +30,7 @@
 }
 
 .review-form-container {
-    padding: 30px;
+    min-width: 300px;
     width: 30%;
     display: flex;
     justify-content: center;
@@ -39,9 +39,10 @@
 }
 
 .business-reviews-container {
-    width: 70%;
+    padding-left: 30px;
+    min-width: 500px;
+    width: 70vw;
     height: auto;
-    padding: 30px;
 }
 
 .empty-drop-header {
@@ -57,4 +58,19 @@
 
 .business-header-title {
     font-size: 40px;
+}
+
+.review-map-wrapper {
+    min-width: 400px;
+    width: 30vw;
+    min-height: 1000px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
 }
