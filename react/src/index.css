@@ -6,6 +6,7 @@ body {
 }
 
 .main-content {
+    z-index: -2;
     position: relative;
     padding-top: 30px;
     width: 100%;

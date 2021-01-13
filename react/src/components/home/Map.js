@@ -48,10 +48,6 @@ const Map = () => {
 
     return isLoaded ? (
         <Animista type={AnimistaTypes.SCALE_UP_LEFT} className="map-container">
-            {/* <LoadScript 
-            googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
-            id="425be5fec40b00f2"
-            /> */}
             <GoogleMap
              mapContainerStyle={{
               height: "100%",
@@ -59,13 +55,12 @@ const Map = () => {
               margin: "0px",
               
             }}
-            styles={mapStyle}
-            zoom={13}
             center={center}
-            onLoad={map => {
-                const bounds = new window.google.maps.LatLngBounds();
-                map.fitBounds(bounds);
-            }}
+            zoom={13}
+            // onLoad={map => {
+            //     const bounds = new window.google.maps.LatLngBounds();
+            //     map.fitBounds(bounds);
+            // }}
             onUnmount={map => {
                 // do your stuff before map is unmounted
             }}

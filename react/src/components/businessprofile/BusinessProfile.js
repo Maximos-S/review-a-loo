@@ -46,9 +46,12 @@ const BusinessProfile = () => {
             </div>
             <div className="business-profile-body">
                 <div className="business-reviews-container">
-                    {business.reviews && reviews.map((review, idx)=> (
+                    {business.reviews && business.reviews[0] ? reviews.map((review, idx)=> (
                         <ReviewCard key={idx} review={review} />
-                        ))}
+                        ))
+                        :
+                        <div className="first-review">Be the first to leave a review!</div>
+                    }
                 </div>
                 <div className="review-map-wrapper">
                     <div className="review-form-container">

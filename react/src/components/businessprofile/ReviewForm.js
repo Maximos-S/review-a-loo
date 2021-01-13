@@ -20,7 +20,6 @@ const ReviewForm = () => {
             setTitle(editReview.title)
             setContent(editReview.content)
         }
-        console.log(editReview)
         return () => {
             if(editReview) {
                 console.log("cleanup")
@@ -34,7 +33,7 @@ const ReviewForm = () => {
     const submitReview = async (e) => {
         e.preventDefault()
 
-        if (title && content && stars) {
+        if (title && content && stars && user) {
             const data = new FormData();
             if (editReview) {
                 data.append("reviewId", editReview.id)
@@ -44,7 +43,6 @@ const ReviewForm = () => {
             data.append("stars", stars)
             data.append("title", title)
             data.append("content", content)
-            console.log("datatata", data)
             setTitle("")
             setContent("")
             setStars(0)
@@ -55,7 +53,6 @@ const ReviewForm = () => {
                 res = await createReview(data, business.id)
             }
 
-            console.log("reessss", res)
             let updatedBusinesses;
             if (businesses) {
                 updatedBusinesses = businesses.map( bznz => {
@@ -66,7 +63,6 @@ const ReviewForm = () => {
                 })
                 setBusinesses(updatedBusinesses)
             }
-            console.log("res.bus.rev", res.business.reviews)
 
             setReviews(res.business.reviews)
             setBusiness(res.business)

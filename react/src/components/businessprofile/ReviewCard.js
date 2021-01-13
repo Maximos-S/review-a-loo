@@ -12,6 +12,7 @@ const ReviewCard = ({review}) => {
     const {user, setEditReview, setBusiness, setReviews, reviews, business, businesses, setBusinesses} = useContext(UserContext)
 
     useEffect(() => {
+        console.log("reviewCard", review)
         return () => {
 
         }
@@ -58,9 +59,10 @@ const ReviewCard = ({review}) => {
                         <ImDroplet className="five-star"/>,]}
                         />
                 </div>
-                    {user.id === review.userId && <HStack>
-                        <IconButton title="edit"  aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
-                        <IconButton title="delete"  aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
+                    {user.id === review.userId && 
+                    <HStack>
+                        <IconButton id="button-override" title="edit"  aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
+                        <IconButton id="button-override" title="delete"  aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
                     </HStack>
                     }
             </div>
