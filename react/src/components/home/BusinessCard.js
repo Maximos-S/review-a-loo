@@ -44,7 +44,7 @@ const BusinessCard = ({business,}) => {
                     <div> No reviews yet</div>
                     }
                     <div>
-                        <Button onClick={rerouteBusinessProfile}>Leave a Review</Button>
+                        <Button id="button-override" onClick={rerouteBusinessProfile}>Leave a Review</Button>
                     </div>
                 </div>
             <div className="business-info">

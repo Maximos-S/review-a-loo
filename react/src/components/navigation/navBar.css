@@ -1,6 +1,5 @@
 .nav-bar {
     width: 100%;
-    min-width: 1300px;
     display: flex;
     height: 70px;
     box-sizing: border-box;
@@ -12,7 +11,7 @@
     position: sticky;
     top: 0;
     z-index: 3;
-    background-color: #A28249;
+    background-color: #f3f0e3;
 }
 
 
@@ -33,11 +32,10 @@
 
 .wave-line {
     width: 100%;
-    min-width: 1300px;
     height: 210px;
     overflow: hidden;
     position: fixed;
-    top: 0px;
+    top: -50px;
     left: 0px;
 }
 
@@ -69,21 +67,27 @@
 
 .search-bar {
     border: none;
-    background-color: #f3f0e3;
+    background-color: #8abebe;
+    color: #472820;
     text-align: center;
     height: 30px;
     width: 500px;
     z-index: 1;
+    border-radius: 5px;
+}
+
+.search-bar::placeholder {
+    color: #472820;
 }
 
 
 .home-link {
     cursor: pointer;
     position: absolute;
-    top: 9px;
+    top: 0px;
     left: 35px;
-    width: 150px;
-    height: 79px;
+    width: 200px;
+    height: 85px;
     font-size: 30px;
     font-family: Fraunces, serif;
     font-style: italic;
@@ -91,10 +95,9 @@
     color: #f3f0e3;
     background-size: cover;
     background-image: url("../../static/review-logo.png");
-    
     z-index: 3;
-        object-fit: cover;
-        object-position: 50% 20%;
+    object-fit: cover;
+    object-position: 50% 20%;
 }
 
 .home-link:hover {

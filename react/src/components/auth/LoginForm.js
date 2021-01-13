@@ -1,4 +1,4 @@
-import { Stack,Input } from "@chakra-ui/react";
+import { Stack,Input, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
@@ -55,7 +55,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <Button id="button-override" type="submit">Login</Button>
       </Stack>
     </form>
   );

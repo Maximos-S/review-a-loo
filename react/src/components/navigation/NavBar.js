@@ -105,7 +105,7 @@ const NavBar = () => {
                         types={['(cities)']}
                         componentRestrictions={{country: "usa"}}
                     />
-                    <Button isLoading={isLoading} onClick={searchNearMe}><FaMapMarkerAlt /></Button>
+                    <Button id="button-override" isLoading={isLoading} onClick={searchNearMe}><FaMapMarkerAlt /></Button>
                 </HStack>
             </div>
             <div className="user-buttons">
@@ -115,7 +115,7 @@ const NavBar = () => {
             </>
             :
             <>
-                {!onRegister && <Button className="nav-button"  onClick={rerouteRegister}>Register</Button>}
+                {!onRegister && <Button id="button-override" className="nav-button"  onClick={rerouteRegister}>Register</Button>}
             </>
             }
             </div>

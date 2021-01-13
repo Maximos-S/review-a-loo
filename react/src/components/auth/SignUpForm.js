@@ -71,7 +71,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             value={repeatPassword}
             required={true}
             ></Input>
-        <Button type="submit">Sign Up</Button>
+        <Button id="button-override" type="submit">Sign Up</Button>
       </Stack>
     </form>
   );
