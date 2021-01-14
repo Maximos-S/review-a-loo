@@ -43,35 +43,39 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     <form onSubmit={onSignUp}>
       <Stack>
           <label>User Name</label>
-          <Input
+          <Input backgroundColor="#f3f0e3" color="#472820"
             type="text"
             name="username"
+            placeholder="User Name"
             onChange={updateUsername}
             value={username}
             ></Input>
           <label>Email</label>
-          <Input
+          <Input backgroundColor="#f3f0e3" color="#472820"
             type="text"
+            placeholder="Email"
             name="email"
             onChange={updateEmail}
             value={email}
             ></Input>
           <label>Password</label>
-          <Input
+          <Input backgroundColor="#f3f0e3" color="#472820"
             type="password"
+            placeholder="Password"
             name="password"
             onChange={updatePassword}
             value={password}
             ></Input>
           <label>Repeat Password</label>
-          <Input
+          <Input backgroundColor="#f3f0e3" color="#472820"
             type="password"
+            placeholder="Password"
             name="repeat_password"
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
             ></Input>
-        <Button id="button-override" type="submit">Sign Up</Button>
+        <Button   color="#472820" colorScheme="yellow" id="button-override" type="submit">Sign Up</Button>
       </Stack>
     </form>
   );

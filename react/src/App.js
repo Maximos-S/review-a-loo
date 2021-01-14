@@ -37,6 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
+        <div className="main-content">
       <UserContext.Provider value={ {
         editReview, setEditReview,
         user,setUser, 
@@ -47,7 +48,6 @@ function App() {
         mapCoordinates, setMapCoordinates
         } }>
         <NavBar />
-        <div className="main-content">
           <Switch>
             <Route path="/register" exact={true}>
               <Register 
@@ -64,8 +64,8 @@ function App() {
               <Home authenticated={authenticated} businesses={businesses} setBusiness={setBusiness}/>
             </Route>
           </Switch>
-        </div>
       </UserContext.Provider>
+        </div>
     </BrowserRouter>
   );
 }

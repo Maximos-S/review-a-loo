@@ -19,6 +19,12 @@ const theme= extendTheme({
         borderColor: "none"
       }),
     },
+    Input: {
+      baseStyle: () => ({
+        bg: "#f3f0e3",
+        color: ""
+      })
+    }
   }
 })
 

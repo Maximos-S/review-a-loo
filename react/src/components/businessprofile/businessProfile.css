@@ -8,25 +8,39 @@
     z-index: 1;
 }
 
-
 .header-container {
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
     width: 80%;
     height: 300px;
-    display: flex;
+    display: grid;
     background-color: #f3f0e3;
     padding: 15px;
     border-radius: 5px;
     z-index: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "Image Title Title Stars"
+    "Image Info Info Map"
+    "Image Info Info Map"
+    "Image Info Info Map"
+    ;
 }
 
 .business-image-header {
+    grid-area: Image;
     height: 100%;
     width: 300px;
     object-fit: cover;
     object-position: 50% 20%;
+}
+.business-no-image-header {
+    grid-area: Image;
+    height: 100%;
+    width: 300px;
+    background-color: lightblue;
 }
 
 .business-profile-body {
@@ -56,12 +70,41 @@
 }
 
 .business-header-info {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    grid-area: Info;
     margin-left: 30px;
     margin-right: 20px;
 }
 
+.business-header-info > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+.profile-star-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    grid-area: Stars;
+}
+
+.profile-header-map {
+    grid-area: Map;
+    height: 110%;
+}
+
 .business-header-title {
+    padding-left: 20px;
     font-size: 40px;
+    grid-area: Title;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .review-map-wrapper {

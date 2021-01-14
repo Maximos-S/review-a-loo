@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {GoogleMap, LoadScript, useJsApiLoader, Marker} from '@react-google-maps/api';
+import {GoogleMap, LoadScript, useJsApiLoader, Marker, InfoWindow} from '@react-google-maps/api';
+import FaAnchor from "react-icons/lib/fa/anchor"
 import mapStyle from './mapStyle'
 import './map.css'
 import { UserContext } from '../context/UserContext';
 import Animista, {AnimistaTypes} from 'react-animista';
 
 
-const Map = () => {
+const Map = ({marks,}) => {
 
     const [center, setCenter] = useState(null);
     const [markers, setMarkers] = useState(null)
@@ -16,11 +17,10 @@ const Map = () => {
     useEffect(() => {
         if (mapCoordinates) {
             setCenter(mapCoordinates)
-            console.log("businessess", businesses)
         }
         return () => {
         }
-    }, [mapCoordinates, businesses]);
+    }, [businesses]);
 
     useEffect(() => {
         getLocation()
@@ -56,7 +56,7 @@ const Map = () => {
               
             }}
             center={center}
-            zoom={13}
+            zoom={12}
             // onLoad={map => {
             //     const bounds = new window.google.maps.LatLngBounds();
             //     map.fitBounds(bounds);
@@ -65,9 +65,18 @@ const Map = () => {
                 // do your stuff before map is unmounted
             }}
             >
-                {businesses && businesses.map((business, idx) => {
-                    console.log("markereeerer")
-                    return <Marker position={{"lat": business.lat, "lng": business.lng}}/>
+                {marks.map((business, idx) => {
+                    return (
+                    <Marker key={idx} position={{"lat": business.lat, "lng": business.lng}}>
+                        <InfoWindow>
+                            <div>
+                            <FaAnchor />
+                            {" "}
+                            Controlled zoom: {12}
+                            </div>
+                        </InfoWindow>
+                    </Marker>
+                    )
                 })}
             </GoogleMap>
         </Animista>

@@ -9,7 +9,7 @@ const LogoutButton = ({setAuthenticated, setUser}) => {
     setUser(false);
   };
 
-  return <Button id="button-override" onClick={onLogout}>Logout</Button>;
+  return <Button   color="#472820" colorScheme="yellow" id="button-override" onClick={onLogout}>Logout</Button>;
 };
 
 export default LogoutButton;

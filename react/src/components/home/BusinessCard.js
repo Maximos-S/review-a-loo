@@ -30,7 +30,11 @@ const BusinessCard = ({business,}) => {
         <div className="business-card-container">
 
             <div className="business-image-container">
+                {business.image ?
                 <img onClick={rerouteBusinessProfile} className="business-image" src={business.image} alt="business"/>
+                :
+                <div onClick={rerouteBusinessProfile} className="business-no-image"></div>
+                }
             </div>
             <div className="card-header" onClick={rerouteBusinessProfile}>{business.name}</div>
             {business.starAvg?
@@ -50,10 +54,10 @@ const BusinessCard = ({business,}) => {
             <div className="card-stars"> No reviews yet</div>
             }
             <div className="create-button">
-                <Button id="button-override" onClick={rerouteBusinessProfile}>Leave a Review</Button>
+                <Button   color="#472820" colorScheme="yellow" id="button-override" onClick={rerouteBusinessProfile}>Leave a Review</Button>
             </div>
             <div className="yelp-link">
-                <Button id="button-override" onClick={rerouteYelpProfile}>Yelp Link</Button>
+                <Button   color="#472820" colorScheme="yellow" id="button-override" onClick={rerouteYelpProfile}>Yelp Link</Button>
             </div>
             <div className="business-info">
                 <div>{business.displayAddress}</div>

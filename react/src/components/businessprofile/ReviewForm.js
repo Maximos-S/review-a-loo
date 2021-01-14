@@ -31,6 +31,7 @@ const ReviewForm = () => {
     }, [editReview]);
     
     const submitReview = async (e) => {
+        console.log("submit review")
         e.preventDefault()
 
         if (title && content && stars && user) {
@@ -99,9 +100,9 @@ const ReviewForm = () => {
                     <ImDroplet className="five-drop"/>,]}
                     />
                 </div>
-                <Input className="title-input" variant="filled" placeholder="Title" placeholder={editReview ? editReview.title : "Title"}value={title} onChange={e => setTitle(e.target.value)}/>
+                <Input backgroundColor="#f3f0e3" color="#472820" className="title-input" variant="filled" placeholder="Title" placeholder={editReview ? editReview.title : "Title"}value={title} onChange={e => setTitle(e.target.value)}/>
                 <Textarea className="content-input" variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
-                <Button id="button-override" onClick={submitReview} >Submit</Button>
+                <Button   color="#472820" colorScheme="yellow" onClick={submitReview} >Submit</Button>
             </Stack>
         </div>
     );

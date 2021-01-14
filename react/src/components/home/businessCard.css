@@ -41,6 +41,12 @@
     object-position: 50% 20%;
     cursor: pointer;
 }
+.business-no-image {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    background-color: lightblue;
+}
 
 .card-header {
     grid-area: Header;
