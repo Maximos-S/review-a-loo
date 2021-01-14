@@ -1,5 +1,4 @@
-export default {
-    mapStyle: [
+export default [
   {
     "elementType": "geometry",
     "stylers": [
@@ -273,4 +272,3 @@ export default {
     ]
   }
 ]
-}

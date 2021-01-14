@@ -45,6 +45,8 @@ const NavBar = () => {
         // setLongitude(lng)
         // setLatitude(lat)
         let res = await searchLocation(lat, lng);
+        lat = res.result[0].lat
+        lng = res.result[0].lng
         setMapCoordinates({lat, lng})
         
         setBusinesses(res.result)
@@ -66,6 +68,9 @@ const NavBar = () => {
             // setLongitude(lng)
             let res = await searchLocation(lat, lng);
             // console.log(user)
+            lat = res.result[0].lat
+            lng = res.result[0].lng
+            setMapCoordinates({lat, lng})
             setBusinesses(res.result) 
             setIsLoading(false)
         }, () => ("Your location is not supported by your browser"))

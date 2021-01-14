@@ -10,6 +10,12 @@
 }
 
 
-.map-pop-up {
-    
+.info-window {
+    color: #472820;
+    font-family: Fraunces;
+    font-size: large;
+}
+
+.gm-ui-hover-effect {
+    display: none !important;
 }
