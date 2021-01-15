@@ -19,7 +19,7 @@ def searchRegion ():
         # headers = {'Authorization': 'Bearer={token}'.format(token=os.environ.get("YELP_API_KEY"))}
 
         # print("headers", headers)
-        response = yelp_api.search_query(term='convenience stores', longitude=form.data["lng"], latitude=form.data["lat"], sort_by='rating', limit=10)
+        response = yelp_api.search_query(term='convenience stores', longitude=form.data["lng"], latitude=form.data["lat"], sort_by='rating', limit=15)
         business_list = []
         for business in response["businesses"]:
             business_search = Business.query.filter(Business.yelp_id == business["id"]).first()
@@ -30,15 +30,13 @@ def searchRegion ():
 
                 for line in business["location"]["display_address"]:
                     formatAddress += line
-
-
                 
                 business_create = Business(
                     yelp_id = business["id"],
                     name = business["name"],
                     image_url = business["image_url"],
-                    latitude = form.data["lat"],
-                    longitude = form.data["lng"],
+                    latitude = business["coordinates"]["latitude"],
+                    longitude = business["coordinates"]["longitude"],
                     address = business["location"]["address1"],
                     city = business["location"]["city"],
                     phone = business["display_phone"],
@@ -136,4 +134,20 @@ def deleteReview(businessId, reviewId):
         db.session.commit()
         print("############deleted##########    ")
     business = Business.query.filter(Business.id == businessId).first()
+
+    count = len(business.to_dict()["reviews"])
+    total_stars = 0
+
+    for review in business.to_dict()["reviews"]:
+        total_stars += review["stars"]
+
+    if count > 0:
+        avg = total_stars // count
+    else:
+        avg = 0
+
+    business.star_avg = avg
+    db.session.add(business)
+    db.session.commit()
+
     return {"business": business.to_dict()}

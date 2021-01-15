@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {setAuthenticated, authenticated} = useContext(UserContext)
+  const {setAuthenticated, authenticated, setUser} = useContext(UserContext)
 
   const onLogin = async (e) => {
     e.preventDefault();

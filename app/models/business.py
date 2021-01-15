@@ -20,6 +20,7 @@ class Business(db.Model):
     reviews = db.relationship('Review',
                                 backref="business", 
                                 lazy="joined",
+                                order_by="desc(Review.id)"
                                 # primaryjoin= id == reviews.c.businessId
                                 )
     
@@ -38,6 +39,8 @@ class Business(db.Model):
             "name": self.name,
             "starAvg": self.star_avg,
             "image": self.image_url,
+            "lat": self.latitude,
+            "lng": self.longitude,
             "displayAddress": self.display_address,
             "phone": self.phone,
             "yelpUrl": self.yelp_url,

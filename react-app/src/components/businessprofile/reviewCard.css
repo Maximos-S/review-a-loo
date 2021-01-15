@@ -2,13 +2,14 @@
     width: 100%;
     /* min-width: 400px; */
     margin: 5px;
+    max-height: 250px;
     height:auto;
     background-color: #f3f0e3;
     padding: 20px;
     /* border: solid 3px #472820; */
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 5fr 2fr;
     grid-template-rows: 1fr 2fr;
     grid-template-areas:
     "Title Stars"
@@ -21,6 +22,8 @@
     justify-content: center;
     align-items: center;
     width:100%;
+    min-width: 500px;
+    max-height: 300px;
     /* min-width: 700px; */
     height: auto;
     margin: 10px;
@@ -31,7 +34,7 @@
 .star-container {
     grid-area: Stars;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -48,6 +51,7 @@
 .review-card-buttons {
     grid-area: Buttons;
     display: flex;
+    justify-content: flex-end;
     align-items: flex-end;
 }
 .empty-star {
