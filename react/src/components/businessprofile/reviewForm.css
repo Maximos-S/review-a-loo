@@ -1,8 +1,15 @@
 .review-form {
+    width: 40%;
     display:flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    margin-bottom: 40px;
     padding: 20px;
+    padding-left: 50px;
+    position: sticky;
+    top: 70px;
+    min-width: 300px;
 }
 
 .rating {
@@ -45,16 +52,27 @@
     align-items: center;
 }
 
+.review-form-title {
+    font-size: 30px;
+}
+
 .review-form {
-    position: sticky;
-    top: 70px;
-    min-width: 300px;
+
 }
 
 .title-input {
     min-width: 200px;
 }
 
+.title-input:focus {
+    background-color: #f3f0e3 !important;
+}
+
 .content-input {
     min-width: 300px;
+}
+
+.content-input:focus {
+    background-color: #f3f0e3 !important;
+
 }

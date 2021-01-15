@@ -1,20 +1,27 @@
 .review-container {
     width: 100%;
-    min-width: 500px;
+    /* min-width: 400px; */
     margin: 5px;
     height:auto;
     background-color: #f3f0e3;
     padding: 20px;
     /* border: solid 3px #472820; */
     border-radius: 5px;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+    "Title Stars"
+    "Review Buttons"
+    ;
 }
 
 .review-border {
     display: flex;
     justify-content: center;
     align-items: center;
-    width:80%;
-    min-width: 700px;
+    width:100%;
+    /* min-width: 700px; */
     height: auto;
     margin: 10px;
     border: 3px solid #472820;
@@ -22,17 +29,26 @@
 }
 
 .star-container {
+    grid-area: Stars;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .review-title {
+    grid-area: Title;
     font-size: 30px;
     padding-left: 20px;
 }
 .review-content {
+    grid-area: Review;
     padding-left: 40px;
+}
+
+.review-card-buttons {
+    grid-area: Buttons;
+    display: flex;
+    align-items: flex-end;
 }
 .empty-star {
     color: rgba(255,255,255,0);

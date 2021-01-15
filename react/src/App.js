@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navigation/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./services/auth";
 import Register from "./components/auth/Register";
 import Home from "./components/home/Home";

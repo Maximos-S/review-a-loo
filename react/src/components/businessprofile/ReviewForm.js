@@ -1,8 +1,7 @@
 import React, {useState,useContext,useEffect,} from 'react';
-import {Stack, Input, Button, Textarea, IconButton} from '@chakra-ui/react'
+import {Stack, Input, Button, Textarea,} from '@chakra-ui/react'
 import Rating from 'react-rating'
 import {ImDroplet} from 'react-icons/im'
-import {MdEdit} from 'react-icons/md'
 import {createReview, patchReview} from '../../services/businesses'
 import './reviewForm.css'
 import { UserContext } from '../context/UserContext';
@@ -33,6 +32,7 @@ const ReviewForm = () => {
     const submitReview = async (e) => {
         console.log("submit review")
         e.preventDefault()
+        setErrors([])
 
         if (title && content && stars && user) {
             const data = new FormData();
@@ -54,6 +54,11 @@ const ReviewForm = () => {
                 res = await createReview(data, business.id)
             }
 
+            if (res.errors) {
+                setErrors(user.errors);
+                return
+            } 
+            
             let updatedBusinesses;
             if (businesses) {
                 updatedBusinesses = businesses.map( bznz => {
@@ -68,24 +73,24 @@ const ReviewForm = () => {
             setReviews(res.business.reviews)
             setBusiness(res.business)
             setEditReview(false)
+        } else {
+            setErrors(["All fields must be filled out"])
         }
 
     }
 
     const updateRating = (rate) => {
-        console.log("starss on lcikc",rate)
         setStars(rate)
-        // if (!starsChange) {
-        //     setStarsChange(true)
-        // } 
-        // if (editToggle === "edit-hidden") {
-        //     setEditToggle("edit-visible")
-        // } 
     }
   
     
     return (
         <div className="review-form">
+            <Stack>
+                {errors.map((error) => (
+                <div>{error}</div>
+                ))}
+            </Stack>
             <Stack>
                 <div className="review-form-title">{editReview? "Edit Your Review": "Create a Review"}</div>
                 <div className="drop-container">
@@ -100,9 +105,9 @@ const ReviewForm = () => {
                     <ImDroplet className="five-drop"/>,]}
                     />
                 </div>
-                <Input backgroundColor="#f3f0e3" color="#472820" className="title-input" variant="filled" placeholder="Title" placeholder={editReview ? editReview.title : "Title"}value={title} onChange={e => setTitle(e.target.value)}/>
-                <Textarea className="content-input" variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
-                <Button   color="#472820" colorScheme="yellow" onClick={submitReview} >Submit</Button>
+                <Input backgroundColor="#f3f0e3" color="#472820" className="title-input" variant="filled" placeholder={editReview ? editReview.title : "Title"} value={title} onChange={e => setTitle(e.target.value)}/>
+                <Textarea backgroundColor="#f3f0e3" className="content-input" variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
+                <Button color="#472820" colorScheme="yellow" onClick={submitReview} >Submit</Button>
             </Stack>
         </div>
     );

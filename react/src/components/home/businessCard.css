@@ -42,10 +42,13 @@
     cursor: pointer;
 }
 .business-no-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 120px;
     height: 120px;
     cursor: pointer;
-    background-color: lightblue;
+    background-color: #d4effa;
 }
 
 .card-header {

@@ -1,8 +1,7 @@
 import React, {useState, useEffect, useContext, } from 'react';
 import {useHistory} from 'react-router-dom'
-import {GoogleMap, LoadScript, useJsApiLoader, Marker, InfoWindow} from '@react-google-maps/api';
-import { ImDroplet } from 'react-icons/im';
-import mapStyle from './mapStyle'
+import {GoogleMap, useJsApiLoader, Marker, InfoWindow} from '@react-google-maps/api';
+import {mapStyle} from './mapStyle'
 import './map.css'
 import { UserContext } from '../context/UserContext';
 import Animista, {AnimistaTypes} from 'react-animista';
@@ -11,20 +10,22 @@ import Animista, {AnimistaTypes} from 'react-animista';
 const Map = ({marks,}) => {
 
     const [center, setCenter] = useState(null);
-    const [markers, setMarkers] = useState(null)
     const [infoWindowId, setInfoWindowId] = useState(null)
 
-    const {mapCoordinates, setMapCoordinates, businesses, business, setBusiness, setReviews} = useContext(UserContext);
+    const {mapCoordinates, setMapCoordinates, businesses, setBusiness, setReviews} = useContext(UserContext);
 
     let history = useHistory();
 
     useEffect(() => {
         if (mapCoordinates) {
-            setCenter(mapCoordinates)
+            setCenter(mapCoordinates)            
+        } else {
+            setMapCoordinates({"lat": marks[0].lat, "lng": marks[0].lng})
+            setCenter({"lat": marks[0].lat, "lng": marks[0].lng})
         }
         return () => {
         }
-    }, [businesses]);
+    }, [businesses, mapCoordinates]);
 
     // useEffect(() => {
     //     getLocation()
@@ -47,12 +48,8 @@ const Map = ({marks,}) => {
 //   }
 
 
-  const { isLoaded } = useJsApiLoader({
-    id: '425be5fec40b00f2',
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY
-  })
 
-    return isLoaded ? (
+    return center ? (
         <Animista type={AnimistaTypes.SCALE_UP_LEFT} className="map-container">
             <GoogleMap
                 options={{
@@ -65,7 +62,7 @@ const Map = ({marks,}) => {
                     margin: "0px",
                 }}
                 center={center}
-                zoom={12}
+                zoom={10}
                 onUnmount={map => {
                     setInfoWindowId(null)
                 }}

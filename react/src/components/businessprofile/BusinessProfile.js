@@ -12,16 +12,19 @@ import { Stack, Button } from '@chakra-ui/react';
 
 const BusinessProfile = () => {
     const {businessId} = useParams();
-    const {setMapCoordinates, reviews, user, authenticated, business, setBusiness, setReviews, setEditReview} = useContext(UserContext)
+    const {setMapCoordinates, reviews, user, authenticated, business, setBusiness, setReviews,} = useContext(UserContext)
 
-    useEffect(async () => {
-        console.log("hello")
-        setMapCoordinates({"lat": business.lat, "lng": business.lng})
-        if (!business) {
-           const res = await getBusiness(businessId)
-           setBusiness(res.business)
-           setReviews(res.business.reviews)
-        }
+    useEffect( () => {
+        (async () => {
+            if (!business) {
+                const res = await getBusiness(businessId)
+                setBusiness(res.business)
+                setReviews(res.business.reviews)
+            } else {
+                setMapCoordinates({"lat": business.lat, "lng": business.lng})
+                console.log("in biz prof", business)
+            }
+        })()
         return () => {
         }
     },[]);
@@ -33,11 +36,13 @@ const BusinessProfile = () => {
 
     return (
         <div className="profile-container">
+            {business && 
+            <> 
             <div className="header-container">
                 { business.image ?
                     <img className="business-image-header" src={business.image} alt="business" /> 
                     :
-                    <div className="business-no-image-header"></div>
+                    <div className="business-no-image-header">No Image</div>
                 }
                 <div className="business-header-title">{business.name}</div>
                 <Stack className="business-header-info">
@@ -58,7 +63,7 @@ const BusinessProfile = () => {
                     />
                 </div>
                 <div className="profile-header-map">
-                    <Map marks={[business]}/>
+                    {business && <Map marks={[business]}/>}
                 </div>
             </div>
             <div className="business-profile-body">
@@ -71,16 +76,15 @@ const BusinessProfile = () => {
                     }
                 </div>
                 <div className="review-map-wrapper">
-                    <div className="review-form-container">
                         {authenticated? 
                         <ReviewForm user={user} />
                         :
                         <div>Login in to leave reviews</div>
                         }
-                    </div>
-                    
                 </div>
             </div>
+            </>
+            }
         </div>
     );
 };

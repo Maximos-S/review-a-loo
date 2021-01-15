@@ -69,8 +69,8 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <Button   color="#472820" colorScheme="yellow" id="button-override" type="submit">Login</Button>
-        <Button   color="#472820" colorScheme="yellow" id="button-override" onClick={loginDemo} >Demo User</Button>
+        <Button color="#472820" colorScheme="yellow" id="button-override" type="submit">Login</Button>
+        <Button  color="#472820" colorScheme="yellow" id="button-override" onClick={loginDemo} >Demo User</Button>
       </Stack>
     </form>
   );

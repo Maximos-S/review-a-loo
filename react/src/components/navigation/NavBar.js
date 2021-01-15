@@ -15,7 +15,7 @@ const NavBar = () => {
     // const [latitude, setLatitude] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const {setAuthenticated, authenticated, setUser, user, setBusinesses, mapCoordinates, setMapCoordinates} = useContext(UserContext)
+    const {setAuthenticated, authenticated, setUser, setBusinesses, setMapCoordinates} = useContext(UserContext)
     // const context = useContext(UserContext)
 
 
@@ -34,7 +34,7 @@ const NavBar = () => {
     }, [location]);
 
     const checkForReroute = () => {
-        if (location.pathname != "/") {
+        if (location.pathname !== "/") {
             history.push("/")
         }
     }
@@ -90,7 +90,7 @@ const NavBar = () => {
         <nav className="nav-bar">
                     {/* <div className="wave" ><svg className="wave-svg"viewBox="0 0 500 150" preserveAspectRatio="none"><path className="wave-path" d="M-28.21,75.48 C63.76,143.58 204.85,-2.45 505.64,93.25 L500.00,0.00 L0.00,0.00 Z"></path></svg></div>
                     <div className="wave-line" ><svg className="wave-line-svg"viewBox="0 0 500 150" preserveAspectRatio="none"><path className="wave-line-path" d="M-28.21,75.48 C63.76,143.58 204.85,-2.45 505.64,93.25 L500.00,0.00 L0.00,0.00 Z"></path></svg></div> */}
-                    <img className="wave-line" src={navWave} />
+                    <img className="wave-line" src={navWave} alt=""/>
             <div className="logo">
                 <div className="home-link" onClick={rerouteHome}>
                 </div>

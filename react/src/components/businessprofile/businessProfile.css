@@ -1,5 +1,6 @@
 .profile-container {
     width: 100%;
+    min-width: 1200px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -13,6 +14,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
     width: 80%;
+    min-width: 1000px;
     height: 300px;
     display: grid;
     background-color: #f3f0e3;
@@ -38,13 +40,20 @@
 }
 .business-no-image-header {
     grid-area: Image;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 300px;
-    background-color: lightblue;
+    background-color: #d4effa;
 }
 
 .business-profile-body {
     display: flex;
+    min-width: 1200px;
+    padding: 0px 50px 0px 50px;
+    position: relative;
+    margin-bottom: 50px;
 }
 
 .review-form-container {
@@ -53,13 +62,14 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    position: relative;
+    position: sticky;
+    top: 100px;
 }
 
 .business-reviews-container {
     padding-left: 30px;
     min-width: 500px;
-    width: 70vw;
+    width: 60vw;
     height: auto;
 }
 
@@ -110,7 +120,6 @@
 .review-map-wrapper {
     min-width: 400px;
     width: 30vw;
-    min-height: 1000px;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-right: 30px;

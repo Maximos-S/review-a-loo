@@ -9,7 +9,7 @@ import About from './About';
 
 
 const Home = () => {
-    const {businesses, user, authenticated} = useContext(UserContext)
+    const {businesses, authenticated} = useContext(UserContext)
     console.log(businesses)
     return (
         <div className="home-main-container">

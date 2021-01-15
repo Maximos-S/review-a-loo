@@ -11,11 +11,12 @@ import './businessCard.css'
 
 
 const BusinessCard = ({business,}) => {
-    const {setBusiness, setReviews} = useContext(UserContext)
+    const {setBusiness, setReviews,setMapCoordinates} = useContext(UserContext)
     let history = useHistory()
 
     const rerouteBusinessProfile = (e) => {
         e.preventDefault()
+        setMapCoordinates({"lat": business.lat, "lng": business.lng})
         setBusiness(business)
         setReviews(business.reviews)
         history.push(`/business/${business.id}`)
@@ -33,7 +34,7 @@ const BusinessCard = ({business,}) => {
                 {business.image ?
                 <img onClick={rerouteBusinessProfile} className="business-image" src={business.image} alt="business"/>
                 :
-                <div onClick={rerouteBusinessProfile} className="business-no-image"></div>
+                <div onClick={rerouteBusinessProfile} className="business-no-image">No Image</div>
                 }
             </div>
             <div className="card-header" onClick={rerouteBusinessProfile}>{business.name}</div>

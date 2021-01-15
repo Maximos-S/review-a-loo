@@ -14,6 +14,7 @@
     color: #472820;
     font-family: Fraunces;
     font-size: large;
+    cursor: pointer;
 }
 
 .gm-ui-hover-effect {

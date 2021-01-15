@@ -23,7 +23,7 @@ const theme= extendTheme({
       baseStyle: () => ({
         bg: "#f3f0e3",
         color: ""
-      })
+      }),
     }
   }
 })

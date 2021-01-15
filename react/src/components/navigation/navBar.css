@@ -12,11 +12,13 @@
     top: 0px;
     background-color: #f3f0e3;
     margin-bottom: 30px;
+    min-width: 1300px;
 }
 
 
 .wave-line {
     width: 100%;
+    min-width: 1300px;
     height: 210px;
     overflow: hidden;
     position: fixed;
@@ -32,7 +34,7 @@
 
 .search-bar {
     border: none;
-    background-color: #d3f0fb;
+    background-color: #d4effa;
     color: #472820;
     text-align: center;
     height: 30px;
