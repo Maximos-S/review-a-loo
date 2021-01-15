@@ -4,6 +4,7 @@ import Rating from 'react-rating'
 import {ImDroplet} from 'react-icons/im'
 import {createReview, patchReview} from '../../services/businesses'
 import './reviewForm.css'
+import {authenticate} from '../../services/auth'
 import { UserContext } from '../context/UserContext';
 
 const ReviewForm = () => {
@@ -11,9 +12,22 @@ const ReviewForm = () => {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])
-    const {setEditReview, editReview, setReviews, user, business, setBusiness, setBusinesses, businesses} = useContext(UserContext)
+    const {setEditReview, editReview, setReviews, setUser, user, business, setBusiness, setBusinesses, businesses, setAuthenticated} = useContext(UserContext)
     
     useEffect(() => {
+        (async() => {
+            const user = await authenticate();
+            if (!user.errors) {
+                setUser(user)
+                setAuthenticated(true);
+            }
+        })();
+        return () => {
+        }
+    }, []);
+
+    useEffect(() => {
+        
         if (editReview) {
             setStars(editReview.stars)
             setTitle(editReview.title)
