@@ -6,6 +6,7 @@ import Register from "./components/auth/Register";
 import Home from "./components/home/Home";
 import BusinessProfile from "./components/businessprofile/BusinessProfile";
 import {UserContext} from "./components/context/UserContext"
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -63,6 +64,7 @@ function App() {
               <Home authenticated={authenticated} businesses={businesses} setBusiness={setBusiness}/>
             </Route>
           </Switch>
+          <Footer />
       </UserContext.Provider>
         </div>
     </BrowserRouter>

@@ -1,11 +1,13 @@
 /* TODO Add site wide styles */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 body {
     padding: 0px;
     margin: 0px;
 }
 
 .main-content {
+    padding-bottom: 200px;
     z-index: 0;
     position: relative;
     width: 100%;
@@ -36,4 +38,10 @@ button {
     color: #472820;
     background-color: #ECC94B;
     font-family: Fraunces, serif;
+}
+
+p {
+    font-family: 'Roboto',
+    sans-serif;
+    font-weight: bold;
 }

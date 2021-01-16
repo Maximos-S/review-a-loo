@@ -42,6 +42,7 @@
     grid-area: Title;
     font-size: 30px;
     padding-left: 20px;
+
 }
 .review-content {
     grid-area: Review;

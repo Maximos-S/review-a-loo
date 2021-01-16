@@ -37,8 +37,8 @@ const ReviewForm = () => {
             if(editReview) {
                 console.log("cleanup")
                 setEditReview(false)
-                setBusiness(false)
-                setReviews(false)
+                // setBusiness(false)
+                // setReviews(false)
             }
         }
     }, [editReview]);

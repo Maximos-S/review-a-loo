@@ -2,26 +2,25 @@
     display: flex;
     width: 100%;
     height: auto;
+    position: relative;
 }
-
-.home-map-wrapper {
-    position: fixed;
-    top: 150px;
-    left: 30px;
-    height: 80%;
-    width: 400px;
-}
-
 .home-map-container {
     width: 30%;
     min-width: 450px;
-    height: 80%;
+    height: auto;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
     padding-top: 0px;
 }
+.home-map-wrapper {
+    position: sticky;
+    /* padding-top: 100px; */
+    top: 150px;
+    height: 300px;
+    width: 400px;
+}
+
 
 .home-business-container {
     width: 70%;

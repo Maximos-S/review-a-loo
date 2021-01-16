@@ -72,7 +72,7 @@ const BusinessProfile = () => {
                         <ReviewCard key={idx} review={review} />
                         ))
                         :
-                        <div className="first-review">Be the first to leave a review!</div>
+                        <div className="first-review">Be the first to review their bathroom!</div>
                     }
                 </div>
                 <div className="review-map-wrapper">
