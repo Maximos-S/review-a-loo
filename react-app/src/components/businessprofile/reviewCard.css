@@ -2,7 +2,7 @@
     width: 100%;
     /* min-width: 400px; */
     margin: 5px;
-    max-height: 250px;
+    max-height: 500px;
     height:auto;
     background-color: #f3f0e3;
     padding: 20px;
@@ -23,7 +23,7 @@
     align-items: center;
     width:100%;
     min-width: 500px;
-    max-height: 300px;
+    max-height: 500px;
     /* min-width: 700px; */
     height: auto;
     margin: 10px;
@@ -46,7 +46,10 @@
 }
 .review-content {
     grid-area: Review;
+    padding-bottom: 10px;
     padding-left: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .review-card-buttons {
