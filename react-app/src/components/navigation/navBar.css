@@ -58,7 +58,7 @@
     position: absolute;
     top: 0px;
     left: 35px;
-    width: 200px;
+    width: 150px;
     height: 85px;
     font-size: 30px;
     font-family: Fraunces, serif;
@@ -66,13 +66,9 @@
     font-weight: 900;
     color: #f3f0e3;
     background-size: cover;
-    background-image: url("../../static/review-logo.png");
     z-index: 3;
     object-fit: cover;
     object-position: 50% 20%;
-}
-
-.home-link:hover {
 }
 
 .user-buttons {

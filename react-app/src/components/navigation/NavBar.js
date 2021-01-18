@@ -8,6 +8,7 @@ import { Button, HStack } from '@chakra-ui/react';
 import {FaMapMarkerAlt} from 'react-icons/fa'
 import { UserContext } from '../context/UserContext';
 import navWave from '../../static/wave.svg'
+import logo from '../../static/logo.svg'
 
 const NavBar = () => {
     const [onRegister, setOnRegister] = useState(false)
@@ -92,8 +93,7 @@ const NavBar = () => {
                     <div className="wave-line" ><svg className="wave-line-svg"viewBox="0 0 500 150" preserveAspectRatio="none"><path className="wave-line-path" d="M-28.21,75.48 C63.76,143.58 204.85,-2.45 505.64,93.25 L500.00,0.00 L0.00,0.00 Z"></path></svg></div> */}
                     <img className="wave-line" src={navWave} alt=""/>
             <div className="logo">
-                <div className="home-link" onClick={rerouteHome}>
-                </div>
+                <img src={logo} className="home-link" onClick={rerouteHome} />
             </div>
             <div className="search-bar-container">
                 <HStack>
