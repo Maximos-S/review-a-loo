@@ -10,9 +10,9 @@ import './reviewCard.css'
 
 const ReviewCard = ({review}) => {
 
-    const {user, setEditReview, setBusiness, setReviews, business, businesses, setBusinesses} = useContext(UserContext)
+    const {user, editReview, setEditReview, setBusiness, setReviews, business, businesses, setBusinesses} = useContext(UserContext)
 
-    const editReview = () => {
+    const editReviewSetter = () => {
         setEditReview(review)
     }
 
@@ -31,6 +31,9 @@ const ReviewCard = ({review}) => {
         }
         setReviews(res.business.reviews)
         setBusiness(res.business)
+        if (editReview && editReview.id === review.id){
+            setEditReview(false)
+        }
 
     }
     return (
@@ -57,7 +60,7 @@ const ReviewCard = ({review}) => {
                 <div className="review-card-buttons">
                     {user.id === review.userId && 
                     <HStack >
-                        <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={editReview} icon={<MdEdit className="edit"/>} />
+                        <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={editReviewSetter} icon={<MdEdit className="edit"/>} />
                         <IconButton  color="#472820" colorScheme="yellow" title="delete"  aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
                     </HStack>
                     }

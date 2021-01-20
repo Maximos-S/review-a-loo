@@ -27,15 +27,17 @@ const ReviewForm = () => {
     }, []);
 
     useEffect(() => {
-        
         if (editReview) {
             setStars(editReview.stars)
             setTitle(editReview.title)
             setContent(editReview.content)
+        } else {
+            setStars(0)
+            setTitle("")
+            setContent("")
         }
         return () => {
             if(editReview) {
-                console.log("cleanup")
                 setEditReview(false)
                 // setBusiness(false)
                 // setReviews(false)
