@@ -39,6 +39,9 @@ const ReviewCard = ({review}) => {
     return (
         <div className="review-border">
         <div className="review-container">
+                <div className="review-user">
+                    {review.user.username}
+                </div>
                 <div className="review-title">
                     {review.title}
                 </div>

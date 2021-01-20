@@ -10,6 +10,8 @@ class Review(db.Model):
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.String(610), nullable=False)
 
+    user = db.relationship("User", backref="review", lazy="joined")
+
     @property
     def get_stars(self):
         return self.stars
@@ -22,4 +24,5 @@ class Review(db.Model):
             "userId": self.userId,
             "title": self.title,
             "content": self.content,
+            "user": self.user.to_dict()
         }

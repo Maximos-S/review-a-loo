@@ -10,9 +10,10 @@
     border-radius: 5px;
     display: grid;
     grid-template-columns: 5fr 2fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 2fr;
     grid-template-areas:
-    "Title Stars"
+    "User Stars"
+    "Title ."
     "Review Buttons"
     ;
 }
@@ -96,4 +97,9 @@
 
 .edit {
     color: #472820;
+}
+
+.review-user {
+    grid-area: User;
+    font-size: 30px;;
 }
