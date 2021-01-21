@@ -61,7 +61,7 @@ function App() {
 
               />
             </Route>
-            <Route path="/users/:businessId" exact={true}>
+            <Route path="/users/:userId" exact={true}>
               <UserProfile
 
               />

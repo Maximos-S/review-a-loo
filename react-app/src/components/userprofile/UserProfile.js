@@ -18,11 +18,13 @@ const UserProfile = () => {
         (async () => {
             if (!userProfile) {
                 const res = await getUser(userId)
+                console.log("res",res)
                 setUserProfile(res)
                 setReviews(res.reviews)
             } else {
             }
         })()
+        console.log("user prof", userProfile)
         return () => {
             setUserProfile(false)
             setReviews(false)
@@ -37,7 +39,7 @@ const UserProfile = () => {
     return (
         <div className="user-page-container">
             <div className="user-profile-container">
-                <div></div>
+                <div>{userProfile.username}</div>
             </div>
             <div className="business-profile-body">
                 <div className="user-reviews-container">
