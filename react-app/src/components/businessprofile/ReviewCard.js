@@ -1,5 +1,6 @@
 import { HStack, IconButton } from '@chakra-ui/react';
 import React, {useContext,} from 'react';
+import {useHistory} from 'react-router-dom'
 import { FaToilet } from 'react-icons/fa';
 import { ImDroplet } from 'react-icons/im';
 import { MdEdit } from 'react-icons/md';
@@ -7,10 +8,13 @@ import Rating from 'react-rating'
 import { deleteReview } from '../../services/businesses';
 import { UserContext } from '../context/UserContext';
 import './reviewCard.css'
+import { getUser } from '../../services/users';
 
 const ReviewCard = ({review}) => {
 
-    const {user, editReview, setEditReview, setBusiness, setReviews, business, businesses, setBusinesses} = useContext(UserContext)
+    const {user, setUserProfile, editReview, setEditReview, setBusiness, setReviews, business, businesses, setBusinesses} = useContext(UserContext)
+
+    let history = useHistory()
 
     const editReviewSetter = () => {
         setEditReview(review)
@@ -36,11 +40,21 @@ const ReviewCard = ({review}) => {
         }
 
     }
+
+    const rerouteUser = async () => {
+        const res = await getUser(review.user.id)
+        setUserProfile(res)
+        setReviews(res.reviews)
+        history.push(`/users/${review.user.id}`)
+    }
+
     return (
         <div className="review-border">
         <div className="review-container">
                 <div className="review-user">
-                    {review.user.username}
+                    <div className="review-user-title" onClick={rerouteUser}>
+                        {review.user.username}
+                    </div>
                 </div>
                 <div className="review-title">
                     {review.title}

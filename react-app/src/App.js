@@ -7,6 +7,7 @@ import Home from "./components/home/Home";
 import BusinessProfile from "./components/businessprofile/BusinessProfile";
 import {UserContext} from "./components/context/UserContext"
 import Footer from "./components/footer/Footer";
+import UserProfile from "./components/userprofile/UserProfile";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -14,6 +15,7 @@ function App() {
   const [businesses, setBusinesses] = useState(false)
   const [business, setBusiness] = useState(false)
   const [user, setUser] = useState(false)
+  const [userProfile, setUserProfile] = useState(false)
   const [reviews, setReviews] = useState([])
   const [editReview, setEditReview] = useState(false)
   const [mapCoordinates, setMapCoordinates] = useState(false)
@@ -41,6 +43,7 @@ function App() {
       <UserContext.Provider value={ {
         editReview, setEditReview,
         user,setUser, 
+        userProfile, setUserProfile,
         authenticated, setAuthenticated, 
         setBusiness, business, 
         setBusinesses, businesses, 
@@ -51,13 +54,16 @@ function App() {
           <Switch>
             <Route path="/register" exact={true}>
               <Register 
-              // setAuthenticated={setAuthenticated} authenticated={authenticated}
               />
             </Route>
             <Route path="/business/:businessId" exact={true}>
               <BusinessProfile
-              // setAuthenticated={setAuthenticated} authenticated={authenticated} setBusiness={setBusiness} business={business}
-              // user={user}
+
+              />
+            </Route>
+            <Route path="/users/:businessId" exact={true}>
+              <UserProfile
+
               />
             </Route>
             <Route path="/" exact={true} authenticated={authenticated}>

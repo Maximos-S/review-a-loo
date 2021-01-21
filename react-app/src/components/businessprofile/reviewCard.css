@@ -39,12 +39,34 @@
     align-items: center;
 }
 
+.review-user {
+    grid-area: User;
+    display:flex;
+}
+
+.review-user-title {
+    font-size: 30px;
+    color: #f3f0e3;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #472820;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 .review-title {
     grid-area: Title;
     font-size: 30px;
     padding-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
+
 .review-content {
     grid-area: Review;
     padding-bottom: 10px;
@@ -97,9 +119,4 @@
 
 .edit {
     color: #472820;
-}
-
-.review-user {
-    grid-area: User;
-    font-size: 30px;;
 }

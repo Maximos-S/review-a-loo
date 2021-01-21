@@ -10,7 +10,7 @@ class Review(db.Model):
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.String(610), nullable=False)
 
-    user = db.relationship("User", backref="review", lazy="joined")
+    user = db.relationship("User", backref="reviews", lazy="joined")
 
     @property
     def get_stars(self):
