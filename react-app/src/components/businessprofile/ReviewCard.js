@@ -56,7 +56,7 @@ const ReviewCard = ({review}) => {
     }
     const rerouteBusiness = async () => {
         if (location.pathname.startsWith("/users/")) {
-            history.push(`/business/${review.businessId}`)
+            history.push(`/businesses/${review.businessId}`)
         }
     }
 

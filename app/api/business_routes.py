@@ -15,12 +15,10 @@ business_routes = Blueprint('businesses', __name__)
 def searchRegion ():
     form = RegionSearchForm()
     if form.validate_on_submit:
-        # url = "https://api.yelp.com/v3/businesses/search?term=gas&latitude=37.786882&longitude=-122.399972"
-        # headers = {'Authorization': 'Bearer={token}'.format(token=os.environ.get("YELP_API_KEY"))}
 
-        # print("headers", headers)
         response = yelp_api.search_query(term='convenience stores', longitude=form.data["lng"], latitude=form.data["lat"], sort_by='rating', limit=15)
         business_list = []
+
         for business in response["businesses"]:
             business_search = Business.query.filter(Business.yelp_id == business["id"]).first()
 
@@ -49,9 +47,12 @@ def searchRegion ():
             else:
                 business = business_search.to_dict()
             business_list.append(business)
-        # print(business_list)   
+            
         return {"result": business_list}
+
     return {"error": "There was an error with your location search"}
+
+
 #returns business data
 @business_routes.route("/<int:id>")
 def get_business(id):
@@ -97,7 +98,6 @@ def create_review(id):
 def editReview(id):
     form = ReviewForm()
     if current_user.id == form.data["userId"]:
-        # print("####form.data[]", form.data)
         review = Review.query.filter(Review.id == form.data["reviewId"]).first()
         review.stars = form.data["stars"]
         review.title = form.data["title"]

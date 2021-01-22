@@ -1,15 +1,12 @@
 import React, {useEffect,useContext, useState} from 'react';
 import {useParams} from 'react-router-dom'
-import Rating from 'react-rating'
-import { ImDroplet } from 'react-icons/im';
-import { getBusiness } from '../../services/businesses';
 import { UserContext } from '../context/UserContext';
 import './userProfile.css'
 import ReviewCard from '../businessprofile/ReviewCard';
-import Map from '../home/Map'
-import { Stack, Button, IconButton } from '@chakra-ui/react';
+import {  IconButton } from '@chakra-ui/react';
 import { getUser } from '../../services/users';
 import { MdEdit } from 'react-icons/md';
+import UserForm from './UserForm';
 
 const UserProfile = () => {
     const {userId} = useParams();
@@ -34,7 +31,7 @@ const UserProfile = () => {
     },[]);
 
     const rerouteEditUser = () => {
-
+        setEditUser(true)
     }
 
 
@@ -48,11 +45,17 @@ const UserProfile = () => {
             </div>
             <div className="business-profile-body">
                 <div className="user-reviews-container">
-                    {reviews && reviews[0] ? reviews.map((review, idx)=> (
-                        <ReviewCard key={idx} review={review} />
-                        ))
-                        :
-                        <div className="first-review">Be the first to review their bathroom!</div>
+                    {editUser ?  
+                        <UserForm setEditUser={setEditUser}/>
+                    :
+                        <>
+                        {reviews && reviews[0] ? reviews.map((review, idx)=> (
+                            <ReviewCard key={idx} review={review} />
+                            ))
+                            :
+                            <div className="first-review">Be the first to review their bathroom!</div>
+                        }
+                        </>
                     }
                 </div>
                 <div className="review-map-wrapper">
