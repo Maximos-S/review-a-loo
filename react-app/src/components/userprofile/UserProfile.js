@@ -1,4 +1,4 @@
-import React, {useEffect,useContext,} from 'react';
+import React, {useEffect,useContext, useState} from 'react';
 import {useParams} from 'react-router-dom'
 import Rating from 'react-rating'
 import { ImDroplet } from 'react-icons/im';
@@ -7,11 +7,13 @@ import { UserContext } from '../context/UserContext';
 import './userProfile.css'
 import ReviewCard from '../businessprofile/ReviewCard';
 import Map from '../home/Map'
-import { Stack, Button } from '@chakra-ui/react';
+import { Stack, Button, IconButton } from '@chakra-ui/react';
 import { getUser } from '../../services/users';
+import { MdEdit } from 'react-icons/md';
 
 const UserProfile = () => {
     const {userId} = useParams();
+    const [editUser, setEditUser] = useState(false)
     const {setMapCoordinates, reviews, userProfile, setUserProfile, authenticated, user, business, setBusiness, setReviews,} = useContext(UserContext)
 
     useEffect( () => {
@@ -31,16 +33,18 @@ const UserProfile = () => {
         }
     },[]);
 
-    const rerouteYelpProfile = (e) => {
-        e.preventDefault()
-        window.location.href = business.yelpUrl
+    const rerouteEditUser = () => {
+
     }
+
+
 
     return (
         <div className="user-page-container">
             <div className="user-profile-container">
                 <div>{userProfile.username}</div>
                 <div>{userProfile.email}</div>
+                <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
             </div>
             <div className="business-profile-body">
                 <div className="user-reviews-container">
