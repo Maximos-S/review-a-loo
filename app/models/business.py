@@ -46,3 +46,16 @@ class Business(db.Model):
             "yelpUrl": self.yelp_url,
             "reviews": [review.to_dict() for review in self.reviews]
         }
+    def to_dict_no_reviews(self):
+        return {
+            "id": self.id,
+            "yelpId": self.yelp_id,
+            "name": self.name,
+            "starAvg": self.star_avg,
+            "image": self.image_url,
+            "lat": self.latitude,
+            "lng": self.longitude,
+            "displayAddress": self.display_address,
+            "phone": self.phone,
+            "yelpUrl": self.yelp_url,
+        }

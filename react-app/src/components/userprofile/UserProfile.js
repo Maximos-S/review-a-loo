@@ -40,10 +40,11 @@ const UserProfile = () => {
         <div className="user-page-container">
             <div className="user-profile-container">
                 <div>{userProfile.username}</div>
+                <div>{userProfile.email}</div>
             </div>
             <div className="business-profile-body">
                 <div className="user-reviews-container">
-                    {business.reviews && business.reviews[0] ? reviews.map((review, idx)=> (
+                    {reviews && reviews[0] ? reviews.map((review, idx)=> (
                         <ReviewCard key={idx} review={review} />
                         ))
                         :

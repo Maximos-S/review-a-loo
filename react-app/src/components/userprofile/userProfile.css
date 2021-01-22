@@ -11,6 +11,9 @@
     padding: 20px;
     background-color: #f3f0e3;
     position: relative;
+    /* grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: ; */
 }
 
 .user-reviews-container {

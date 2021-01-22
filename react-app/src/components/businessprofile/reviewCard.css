@@ -10,11 +10,12 @@
     border-radius: 5px;
     display: grid;
     grid-template-columns: 5fr 2fr;
-    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 2fr 1fr;
     grid-template-areas:
     "User Stars"
     "Title ."
-    "Review Buttons"
+    "Review Review"
+    "Business Buttons"
     ;
 }
 
@@ -42,6 +43,7 @@
 .review-user {
     grid-area: User;
     display:flex;
+    justify-content: space-between;
 }
 
 .review-user-title {
@@ -53,6 +55,27 @@
     text-overflow: ellipsis;
     background-color: #472820;
     padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.review-business {
+    grid-area:Business;
+    display: flex;
+}
+
+.review-business-title {
+    max-width: 80%;
+    width: auto;
+    margin:auto;
+    margin-left: 0px;
+    font-size: 20px;
+    color: #472820;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #ECC94B;
+    padding: 5px;
     cursor: pointer;
     border-radius: 5px;
 }

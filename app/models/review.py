@@ -24,5 +24,6 @@ class Review(db.Model):
             "userId": self.userId,
             "title": self.title,
             "content": self.content,
-            "user": self.user.to_dict()
+            "user": self.user.to_dict(),
+            "business": self.business.to_dict_no_reviews()
         }

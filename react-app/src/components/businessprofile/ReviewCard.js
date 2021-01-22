@@ -1,6 +1,6 @@
 import { HStack, IconButton } from '@chakra-ui/react';
 import React, {useContext,} from 'react';
-import {useHistory} from 'react-router-dom'
+import {useHistory, useLocation} from 'react-router-dom'
 import { FaToilet } from 'react-icons/fa';
 import { ImDroplet } from 'react-icons/im';
 import { MdEdit } from 'react-icons/md';
@@ -15,8 +15,15 @@ const ReviewCard = ({review}) => {
     const {user, setUserProfile, editReview, setEditReview, setBusiness, setReviews, business, businesses, setBusinesses} = useContext(UserContext)
 
     let history = useHistory()
+    let location = useLocation()
 
     const editReviewSetter = () => {
+        console.log("yesss", location.pathname)
+        if (location.pathname.startsWith("/users/")) {
+            setEditReview(review)
+            history.push(`/business/${review.businessId}`)
+
+        }
         setEditReview(review)
     }
 
@@ -47,6 +54,11 @@ const ReviewCard = ({review}) => {
         setReviews(res.reviews)
         history.push(`/users/${review.user.id}`)
     }
+    const rerouteBusiness = async () => {
+        if (location.pathname.startsWith("/users/")) {
+            history.push(`/business/${review.businessId}`)
+        }
+    }
 
     return (
         <div className="review-border">
@@ -74,15 +86,20 @@ const ReviewCard = ({review}) => {
                         />
                 </div>
             </div>
-                <div className="review-card-buttons">
-                    {user.id === review.userId && 
-                    <HStack >
-                        <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={editReviewSetter} icon={<MdEdit className="edit"/>} />
-                        <IconButton  color="#472820" colorScheme="yellow" title="delete"  aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
-                    </HStack>
-                    }
-                </div>
-            <div className="review-content">
+            <div className="review-card-buttons">
+                {user.id === review.userId && 
+                <HStack >
+                    <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={editReviewSetter} icon={<MdEdit className="edit"/>} />
+                    <IconButton  color="#472820" colorScheme="yellow" title="delete"  aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />
+                </HStack>
+                }
+            </div>
+            <div className="review-business" onClick={rerouteUser}>
+                <h3 className="review-business-title">
+                    {review.business.name}
+                </h3>
+            </div>
+            <div className="review-content" onClick={rerouteBusiness}>
                     {review.content}
             </div>
         </div>
