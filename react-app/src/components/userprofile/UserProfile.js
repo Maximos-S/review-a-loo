@@ -41,6 +41,7 @@ const UserProfile = () => {
             <div className="user-profile-container">
                 <div>{userProfile.username}</div>
                 <div>{userProfile.email}</div>
+                <img src={userProfile.img_url} alt="profile" />
                 <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
             </div>
             <div className="business-profile-body">

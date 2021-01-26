@@ -28,6 +28,7 @@ Werkzeug = "==1.0.1"
 WTForms = "==2.3.3"
 requests = "*"
 yelpapi = "*"
+boto3 = "*"
 
 [dev-packages]
 pylint = "*"

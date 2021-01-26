@@ -8,6 +8,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(40), nullable=False, unique = True)
     email = db.Column(db.String(255), nullable=False, unique = True)
+    img_url = db.Column(db.String(100), nullable=False, default="https://review-a-loo-profile-image.s3.us-east-2.amazonaws.com/no-user.jpg")
     hashed_password = db.Column(db.String(255), nullable=False)
 
     @property
@@ -25,7 +26,8 @@ class User(db.Model, UserMixin):
         return {
             "id": self.id,
             "username": self.username,
-            "email": self.email
+            "email": self.email,
+            "img_url": self.img_url
         }
 
     def to_dict_reviews(self):
@@ -33,5 +35,6 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "username": self.username,
             "email": self.email,
+            "img_url": self.img_url,
             "reviews": [review.to_dict() for review in self.reviews]
         }
