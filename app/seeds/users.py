@@ -5,8 +5,7 @@ from app.models import db, User
 def seed_users():
 
     demo = User(username='Demo', email='demo@demo.com',
-                password='password')
-
+                password='password', bio="Hello, I am the demo user. I was created by Maximos Salzman. Please create a new user if you would like to edit your own biography and profile picture!")
     db.session.add(demo)
     db.session.commit()
 

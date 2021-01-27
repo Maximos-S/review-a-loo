@@ -86,4 +86,12 @@
 
 .user-buttons>a {
     margin: 5px;
+    
+}
+.user-buttons > button {
+    margin: 5px;
+}
+
+.user-icon {
+    font-size: 25px;
 }

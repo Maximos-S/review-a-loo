@@ -5,7 +5,7 @@ import Autocomplete from 'react-google-autocomplete';
 import {searchLocation} from '../../services/businesses'
 import './navBar.css'
 import { Button, HStack } from '@chakra-ui/react';
-import {FaMapMarkerAlt} from 'react-icons/fa'
+import {FaMapMarkerAlt, FaUserCircle} from 'react-icons/fa'
 import { UserContext } from '../context/UserContext';
 import navWave from '../../static/wave.svg'
 import logo from '../../static/logo.svg'
@@ -16,7 +16,7 @@ const NavBar = () => {
     // const [latitude, setLatitude] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const {setAuthenticated, authenticated, setUser, setBusinesses, setMapCoordinates} = useContext(UserContext)
+    const {setAuthenticated, authenticated, setUser, user, setBusinesses, setMapCoordinates} = useContext(UserContext)
     // const context = useContext(UserContext)
 
 
@@ -82,6 +82,10 @@ const NavBar = () => {
         history.push("/")
     }
 
+    const rerouteProfile = () => {
+        history.push(`/users/${user.id}`)
+    }
+
     const rerouteRegister = () => {
         history.push("/register")
         
@@ -117,6 +121,7 @@ const NavBar = () => {
             {authenticated?
             <>
                 <LogoutButton setAuthenticated={setAuthenticated} setUser={setUser} />
+                <Button   color="#472820" colorScheme="yellow" id="button-override" isLoading={isLoading} onClick={rerouteProfile}><FaUserCircle className="user-icon" /></Button>
             </>
             :
             <>

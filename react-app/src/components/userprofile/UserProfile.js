@@ -54,7 +54,7 @@ const UserProfile = () => {
                             <ReviewCard key={idx} review={review} />
                             ))
                             :
-                            <div className="first-review">Be the first to review their bathroom!</div>
+                            <div className="first-review">This user has not left any reviews yet!</div>
                         }
                         </>
                     }
