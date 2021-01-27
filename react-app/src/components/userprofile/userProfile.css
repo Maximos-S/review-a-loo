@@ -11,9 +11,18 @@
     padding: 20px;
     background-color: #f3f0e3;
     position: relative;
+    display: flex;
+    flex-direction: column;
     /* grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: ; */
+}
+
+.profile-image {
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
+    /* object-position: 50% 50%; */
 }
 
 .user-reviews-container {

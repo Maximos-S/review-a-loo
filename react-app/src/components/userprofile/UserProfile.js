@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import { UserContext } from '../context/UserContext';
 import './userProfile.css'
 import ReviewCard from '../businessprofile/ReviewCard';
-import {  IconButton } from '@chakra-ui/react';
+import {  IconButton, Stack } from '@chakra-ui/react';
 import { getUser } from '../../services/users';
 import { MdEdit } from 'react-icons/md';
 import UserForm from './UserForm';
@@ -39,10 +39,13 @@ const UserProfile = () => {
     return (
         <div className="user-page-container">
             <div className="user-profile-container">
-                <div>{userProfile.username}</div>
-                <div>{userProfile.email}</div>
-                <img src={userProfile.img_url} alt="profile" />
-                <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
+                <img className="profile-image" src={userProfile.img_url} alt="profile" />
+                <Stack>
+                    <div>{userProfile.username}</div>
+                    <div>{userProfile.email}</div>
+                    <div>{userProfile.bio}</div>
+                    <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
+                </Stack>
             </div>
             <div className="business-profile-body">
                 <div className="user-reviews-container">
