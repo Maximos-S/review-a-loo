@@ -30,7 +30,9 @@
     width: 60%;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .user-profile-container::after {

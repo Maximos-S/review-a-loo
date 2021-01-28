@@ -4,7 +4,7 @@ import uuid
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 import mimetypes
-from app.models import User
+from app.models import User, db
 from app.forms import EditUserForm
 import uuid
 user_routes = Blueprint('users', __name__)
@@ -23,15 +23,16 @@ def user(id):
 ## edit user
 @user_routes.route('/<int:id>', methods=['POST'])
 def edit_user(id):
-    if id == 1:
-        return {"error": "not authorized"}
+    # if id == 1:
+    #     return {"errors": "not authorized"}
     if current_user.id != id:
-        return {"error": "not authorized"}
+        return {"errors": ["not authorized"]}
     user = User.query.get(id)
     form = EditUserForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit:
         if form.data['image']:
             img_name = str(uuid.uuid4())
+            print("#####", img_name)
             img = form.data['image']
             file_name = secure_filename(img.filename)
             mime_type = mimetypes.guess_type(file_name)
@@ -48,3 +49,5 @@ def edit_user(id):
         db.session.commit()
 
         return user.to_dict()
+    else:
+        return {"errors": ["did not submit",]}

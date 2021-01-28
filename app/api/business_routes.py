@@ -67,7 +67,6 @@ def get_business(id):
 @business_routes.route("/<int:id>", methods=["POST"])
 def create_review(id):
     form = ReviewForm()
-    print("########formdata#######",form.data)
     if form.validate_on_submit:
         review = Review(
             userId=form.data["userId"],

@@ -122,7 +122,7 @@ const ReviewForm = () => {
                     />
                 </div>
                 <Input backgroundColor="#f3f0e3" color="#472820" className="title-input" variant="filled" placeholder={editReview ? editReview.title : "Title"} value={title} onChange={e => setTitle(e.target.value)}/>
-                <Textarea backgroundColor="#f3f0e3" className="content-input" variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
+                <Textarea backgroundColor="#f3f0e3" height="200px" className="content-input" variant="filled" placeholder="Content" value={content} onChange={e => setContent(e.target.value)}/>
                 <Button color="#472820" colorScheme="yellow" onClick={submitReview} >Submit</Button>
             </Stack>
         </div>

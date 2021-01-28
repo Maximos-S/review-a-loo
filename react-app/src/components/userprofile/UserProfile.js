@@ -11,7 +11,7 @@ import UserForm from './UserForm';
 const UserProfile = () => {
     const {userId} = useParams();
     const [editUser, setEditUser] = useState(false)
-    const {setMapCoordinates, reviews, userProfile, setUserProfile, authenticated, user, business, setBusiness, setReviews,} = useContext(UserContext)
+    const {reviews, userProfile, setUserProfile, authenticated, user, business, setBusiness, setReviews,} = useContext(UserContext)
 
     useEffect( () => {
         (async () => {
@@ -31,12 +31,16 @@ const UserProfile = () => {
     },[]);
 
     const rerouteEditUser = () => {
+        console.log("how?")
         setEditUser(true)
     }
 
 
 
     return (
+        <>
+        {
+            userProfile ?
         <div className="user-page-container">
             <div className="user-profile-container">
                 <img className="profile-image" src={userProfile.img_url} alt="profile" />
@@ -44,13 +48,14 @@ const UserProfile = () => {
                     <div>{userProfile.username}</div>
                     <div>{userProfile.email}</div>
                     <div>{userProfile.bio}</div>
+                    {user.id === userId}
                     <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
                 </Stack>
             </div>
             <div className="business-profile-body">
                 <div className="user-reviews-container">
                     {editUser ?  
-                        <UserForm setEditUser={setEditUser}/>
+                        <UserForm userProfile={userProfile} setUserProfile={setUserProfile} setEditUser={setEditUser}/>
                     :
                         <>
                         {reviews && reviews[0] ? reviews.map((review, idx)=> (
@@ -64,6 +69,10 @@ const UserProfile = () => {
                 </div>
             </div>
         </div>
+        :
+        <div>Loading...</div>
+        }
+        </>
     );
 };
 

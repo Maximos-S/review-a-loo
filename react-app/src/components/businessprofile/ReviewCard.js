@@ -88,7 +88,7 @@ const ReviewCard = ({review}) => {
                 </div>
             </div>
             <div className="review-card-buttons">
-                {user.id === review.userId && 
+                {user.id === review.userId && location.pathname.startsWith("/business/") &&
                 <HStack >
                     <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={editReviewSetter} icon={<MdEdit className="edit"/>} />
                     <IconButton  color="#472820" colorScheme="yellow" title="delete"  aria-label="Search database" onClick={destroyReview} icon={<FaToilet className="edit"/>} />

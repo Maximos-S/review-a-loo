@@ -14,8 +14,6 @@ def user_exists(form, field):
         raise ValidationError("User is already registered")
 
 class EditUserForm(FlaskForm):
-    username = StringField("username", validators=[DataRequired(), user_exists])
-    bio = StringField("bio")
-    image = FileField("image", validators=[FileAllowed(['jpg', 'jpeg', 'png'], "wrong file type provided")])
-    password = StringField('password', validators=[DataRequired()])
-    
+    username = StringField("username", validators=[DataRequired()])
+    bio = StringField("bio",validators=[DataRequired()])
+    image = FileField("image", validators=[FileAllowed(['jpg', 'jpeg', 'png'], "wrong file type provided")])    
