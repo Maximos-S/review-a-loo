@@ -48,8 +48,9 @@ const UserProfile = () => {
                     <div>{userProfile.username}</div>
                     <div>{userProfile.email}</div>
                     <div>{userProfile.bio}</div>
-                    {user.id === userId}
-                    <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
+                    {user.id === userId && userId != 1 &&
+                        <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
+                    }
                 </Stack>
             </div>
             <div className="business-profile-body">
