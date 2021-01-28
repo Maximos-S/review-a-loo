@@ -62,8 +62,6 @@ const UserProfile = () => {
                         </>
                     }
                 </div>
-                <div className="review-map-wrapper">
-                </div>
             </div>
         </div>
     );

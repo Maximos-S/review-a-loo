@@ -56,7 +56,8 @@ const ReviewCard = ({review}) => {
     }
     const rerouteBusiness = async () => {
         if (location.pathname.startsWith("/users/")) {
-            history.push(`/businesses/${review.businessId}`)
+
+            history.push(`/business/${review.businessId}`)
         }
     }
 
@@ -94,12 +95,12 @@ const ReviewCard = ({review}) => {
                 </HStack>
                 }
             </div>
-            <div className="review-business" onClick={rerouteUser}>
+            <div className="review-business" onClick={rerouteBusiness}>
                 <h3 className="review-business-title">
                     {review.business.name}
                 </h3>
             </div>
-            <div className="review-content" onClick={rerouteBusiness}>
+            <div className="review-content">
                     {review.content}
             </div>
         </div>
