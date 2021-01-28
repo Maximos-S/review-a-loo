@@ -1,9 +1,8 @@
 .review-container {
     width: 100%;
     /* min-width: 400px; */
-    margin: 5px;
     max-height: 500px;
-    height:auto;
+    height: 100%;
     background-color: #f3f0e3;
     padding: 20px;
     /* border: solid 3px #472820; */
@@ -29,6 +28,7 @@
     /* min-width: 700px; */
     height: auto;
     margin: 10px;
+    padding:5px;
     border: 3px solid #472820;
     border-radius: 5px;
 }
