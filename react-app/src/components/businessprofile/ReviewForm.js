@@ -46,7 +46,6 @@ const ReviewForm = () => {
     }, [editReview]);
     
     const submitReview = async (e) => {
-        console.log("submit review")
         e.preventDefault()
         setErrors([])
 

@@ -17,13 +17,12 @@ const UserProfile = () => {
         (async () => {
             if (!userProfile) {
                 const res = await getUser(userId)
-                console.log("res",res)
                 setUserProfile(res)
                 setReviews(res.reviews)
             } else {
             }
         })()
-        console.log("user prof", userProfile)
+
         return () => {
             setUserProfile(false)
             setReviews(false)
@@ -31,7 +30,6 @@ const UserProfile = () => {
     },[]);
 
     const rerouteEditUser = () => {
-        console.log("how?")
         setEditUser(true)
     }
 
@@ -45,13 +43,14 @@ const UserProfile = () => {
             <div className="user-profile-container">
                 <img className="profile-image" src={userProfile.img_url} alt="profile" />
                 <Stack>
-                    <div>{userProfile.username}</div>
+                    <div className="profile-username">{userProfile.username}
+                    </div>
                     <div>{userProfile.email}</div>
                     <div>{userProfile.bio}</div>
-                    {user.id === userId && userId != 1 &&
+                </Stack>
+                    {user.id == userId && userId != 1 &&
                         <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
                     }
-                </Stack>
             </div>
             <div className="business-profile-body">
                 <div className="user-reviews-container">

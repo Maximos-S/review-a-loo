@@ -131,7 +131,6 @@ def deleteReview(businessId, reviewId):
     if current_user.id == review.userId:
         db.session.delete(review)
         db.session.commit()
-        print("############deleted##########    ")
     business = Business.query.filter(Business.id == businessId).first()
 
     count = len(business.to_dict()["reviews"])

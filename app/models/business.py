@@ -5,7 +5,7 @@ class Business(db.Model):
     __tablename__ = 'businesses'
 
     id = db.Column(db.Integer, primary_key=True)
-    yelp_id = db.Column(db.String(255), unique=True, nullable=False)
+    yelp_id = db.Column(db.String(255), unique=True, nullable=False, index=True)
     name = db.Column(db.String(255), nullable=False)
     star_avg = db.Column(db.Float,)
     image_url = db.Column(db.String(255))

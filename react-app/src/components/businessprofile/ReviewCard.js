@@ -18,7 +18,6 @@ const ReviewCard = ({review}) => {
     let location = useLocation()
 
     const editReviewSetter = () => {
-        console.log("yesss", location.pathname)
         if (location.pathname.startsWith("/users/")) {
             setEditReview(review)
             history.push(`/business/${review.businessId}`)

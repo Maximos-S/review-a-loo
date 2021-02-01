@@ -11,12 +11,12 @@ const UserForm = ({userProfile, setUserProfile, setEditUser}) => {
     const submitUserEdit = async (e) => {
         e.preventDefault()
         const data = new FormData();
+        data.append("id", userProfile.id)
         data.append("username", username)
         data.append("image", image)
         data.append("bio", bio)
         const res = await editUser(data, userProfile.id)
         if (res.errors) {
-            console.log("resszzzz", res)
             setErrors(res.errors)
         }
         setUserProfile(res)
@@ -37,13 +37,13 @@ const UserForm = ({userProfile, setUserProfile, setEditUser}) => {
                 <div className="review-form-title">Edit Your Profile</div>
                 
                 <Input type="text" backgroundColor="#f3f0e3" color="#472820" 
-                    className="username-input"
+                    className="title-input"
                     variant="filled" placeholder="Username" 
                     value={username} 
                     onChange={e => setUserName(e.target.value)}
                 />
                 <Input type="file" backgroundColor="#f3f0e3" color="#472820" 
-                    className="title-input" 
+                    className="file-input" 
                     variant="filled"
                     onChange={updateImage}
                 />

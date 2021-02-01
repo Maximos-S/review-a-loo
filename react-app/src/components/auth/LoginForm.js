@@ -16,6 +16,7 @@ const LoginForm = () => {
     const user = await login(email, password);
     if (!user.errors) {
       setAuthenticated(true);
+      setUser(user)
     } else {
       setErrors(user.errors);
     }
@@ -26,6 +27,7 @@ const LoginForm = () => {
     const user = await login("demo@demo.com","password");
     if (!user.errors) {
       setAuthenticated(true);
+      setUser(user)
     } else {
       setErrors(user.errors)
     }

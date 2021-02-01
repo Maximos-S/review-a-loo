@@ -32,7 +32,6 @@ def edit_user(id):
     if form.validate_on_submit:
         if form.data['image']:
             img_name = str(uuid.uuid4())
-            print("#####", img_name)
             img = form.data['image']
             file_name = secure_filename(img.filename)
             mime_type = mimetypes.guess_type(file_name)

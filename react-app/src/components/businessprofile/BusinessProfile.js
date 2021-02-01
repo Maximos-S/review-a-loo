@@ -18,11 +18,9 @@ const BusinessProfile = () => {
         (async () => {
             if (!business) {
                 const res = await getBusiness(businessId)
-                console.log("no biz", business)
                 setBusiness(res.business)
                 setReviews(res.business.reviews)
             } else {
-                console.log("in biz prof", business)
                 setReviews(business.reviews)
                 setMapCoordinates({"lat": business.lat, "lng": business.lng})
             }

@@ -10,7 +10,6 @@ import About from './About';
 
 const Home = () => {
     const {businesses, authenticated} = useContext(UserContext)
-    console.log(businesses)
     return (
         <div className="home-main-container">
             <div className="home-map-container">
