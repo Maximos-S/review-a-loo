@@ -1,12 +1,19 @@
 # Review-a-Loo - The Highway Bathroom Cleanliness Review App
 Everybody wants it. Everybody needs it. It's finally here! The app to review bathroom cleanliness. Now everyone can be like George Castanza and find the right throne to park at.
 
+![](review-a-loo.gif)
+
+
+Review-a-Loo lets users sign up and start reviewing bathrooms. The search feature implements Google Places' Autocomplete API to select cities to query the Yelp Fusion API. The Yelp Fusion API is called from the server and sends the data to the client where it is displayed using Google Maps and custom React components. The Client is encouraged to leave a review and a rating for a bathroom. 
+
 ## MVP
 * User Registration
 * Search Restrooms by Location
 * Map Display for Nearby Restrooms
 * Business Profile Page
 * Add/Edit/Delete Reviews
+* User Profile Page
+* User Uploaded Profile Pictures
 
 ## BONUS STRETCH GOALS
 * Upvote Reviews
@@ -43,7 +50,7 @@ Everybody wants it. Everybody needs it. It's finally here! The app to review bat
 
 ### BUSINESSES
 * id(integer, primary key)
-* yelpId (integer, not null, unique)
+* yelpId (integer, not null, unique, index)
 * name (string, not null)
 * imageUrl (string, nullable)
 * category (string, nullable)
