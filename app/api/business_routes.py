@@ -18,7 +18,8 @@ def searchRegion ():
 
         response = yelp_api.search_query(term='convenience stores', longitude=form.data["lng"], latitude=form.data["lat"], sort_by='rating', limit=15)
         business_list = []
-
+        if len(response["businesses"]) == 0:
+            return {"errors": ["No businesses in your area"]}
         for business in response["businesses"]:
             business_search = Business.query.filter(Business.yelp_id == business["id"]).first()
 
@@ -50,7 +51,7 @@ def searchRegion ():
             
         return {"result": business_list}
 
-    return {"error": "There was an error with your location search"}
+    return {"errors": ["There was an error with your location search"]}
 
 
 #returns business data

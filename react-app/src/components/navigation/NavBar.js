@@ -65,12 +65,32 @@ const NavBar = () => {
             lat = position.coords.latitude
             lng = position.coords.longitude
             let res = await searchLocation(lat, lng);
+            if (res.errors) {
+                alert(res.errors[0])
+                setIsLoading(false)
+                return
+            }
             lat = res.result[0].lat
             lng = res.result[0].lng
             setMapCoordinates({lat, lng})
             setBusinesses(res.result) 
             setIsLoading(false)
-        }, () => ("Your location is not supported by your browser"))
+        }, async () => {
+            lat = 33.9413375854492
+            lng = -83.4702911376953
+            let res = await searchLocation(lat, lng);
+            if (res.errors) {
+                alert(res.errors[0])
+                setIsLoading(false)
+                return
+            }
+            lat = res.result[0].lat
+            lng = res.result[0].lng
+            setMapCoordinates({lat, lng})
+            setBusinesses(res.result) 
+            setIsLoading(false)
+            alert("There was a problem selecting your current location! Here are the results for the developer's home town.")
+            })
         
     }
 
