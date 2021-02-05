@@ -7,9 +7,12 @@ const UserForm = ({userProfile, setUserProfile, setEditUser}) => {
     const [username, setUserName] = useState(userProfile.username)
     const [image, setImage] = useState("")
     const [bio, setBio] = useState(userProfile.bio)
+    const [isLoading,setIsLoading] = useState(false)
 
     const submitUserEdit = async (e) => {
         e.preventDefault()
+        setIsLoading(true)
+        console.log("success",isLoading)
         const data = new FormData();
         data.append("id", userProfile.id)
         data.append("username", username)
@@ -18,8 +21,14 @@ const UserForm = ({userProfile, setUserProfile, setEditUser}) => {
         const res = await editUser(data, userProfile.id)
         if (res.errors) {
             setErrors(res.errors)
+            setIsLoading(false)
+        } else {
+            setUserProfile(res)
+            setIsLoading(false)
         }
-        setUserProfile(res)
+        console.log("success after set",isLoading)
+
+
     }
 
     const updateImage = (e) => {
@@ -54,7 +63,7 @@ const UserForm = ({userProfile, setUserProfile, setEditUser}) => {
                     value={bio}
                     onChange={e => setBio(e.target.value)}
                 />
-                <Button color="#472820" colorScheme="yellow" onClick={submitUserEdit}>Submit</Button>
+                <Button color="#472820" colorScheme="yellow" onClick={submitUserEdit} isLoading={isLoading}>Submit</Button>
                 <Button color="#472820" colorScheme="yellow" onClick={e => setEditUser(false)}>Cancel</Button>
             </Stack>
         </div>

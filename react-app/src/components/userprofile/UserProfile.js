@@ -48,7 +48,7 @@ const UserProfile = () => {
                     <div>{userProfile.email}</div>
                     <div>{userProfile.bio}</div>
                 </Stack>
-                    {user.id == userId && userId != 1 &&
+                    {user.id == userId &&
                         <IconButton  color="#472820" colorScheme="yellow" title="edit"  aria-label="Search database" onClick={rerouteEditUser} icon={<MdEdit className="edit"/>} />
                     }
             </div>

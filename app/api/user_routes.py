@@ -23,8 +23,6 @@ def user(id):
 ## edit user
 @user_routes.route('/<int:id>', methods=['POST'])
 def edit_user(id):
-    if id == 1:
-        return {"errors": "not authorized"}
     if current_user.id != id:
         return {"errors": ["not authorized"]}
     user = User.query.get(id)
