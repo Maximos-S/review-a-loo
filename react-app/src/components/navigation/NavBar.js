@@ -16,7 +16,7 @@ const NavBar = () => {
     // const [latitude, setLatitude] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const {setAuthenticated, authenticated, setUser, user, setBusinesses, setMapCoordinates} = useContext(UserContext)
+    const {setAuthenticated, authenticated, setUser, user, setBusinesses, setMapCoordinates, businesses} = useContext(UserContext)
     // const context = useContext(UserContext)
 
 
@@ -28,10 +28,20 @@ const NavBar = () => {
         } else {
             setOnRegister(false)
         }
+
+        if (location.pathname === "/" && authenticated && !businesses ){
+            console.log("search bar")
+            const searchBar = document.getElementById("search-bar-container")
+            const screenBlur = document.getElementById("screen-blur")
+            searchBar.classList.remove("search-bar-container")
+            screenBlur.classList.remove("screen-blur-hidden")
+            searchBar.classList.add("search-bar-container-fixed")
+            screenBlur.classList.add("screen-blur")
+        }
         return () => {
         }
         
-    }, [location]);
+    }, [location, authenticated]);
 
     const checkForReroute = () => {
         if (location.pathname !== "/") {
@@ -40,6 +50,12 @@ const NavBar = () => {
     }
 
     const searchRegion = async (lat,lng) => {
+        const searchBar = document.getElementById("search-bar-container")
+        const screenBlur = document.getElementById("screen-blur")
+        searchBar.classList.add("search-bar-container")
+        screenBlur.classList.add("screen-blur-hidden")
+        searchBar.classList.remove("search-bar-container-fixed")
+        screenBlur.classList.remove("screen-blur")
         setIsLoading(!isLoading)
         checkForReroute()
         // setLongitude(lng)
@@ -55,7 +71,12 @@ const NavBar = () => {
     }
 
     const searchNearMe = async () => {
-        // const locationData = new FormData()
+        const searchBar = document.getElementById("search-bar-container")
+        const screenBlur = document.getElementById("screen-blur")
+        searchBar.classList.add("search-bar-container")
+        screenBlur.classList.add("screen-blur-hidden")
+        searchBar.classList.remove("search-bar-container-fixed")
+        screenBlur.classList.remove("screen-blur")
         setIsLoading(!isLoading)
         checkForReroute()
         let lat;
@@ -116,7 +137,8 @@ const NavBar = () => {
             <div className="logo">
                 <img src={logo} className="home-link" onClick={rerouteHome} />
             </div>
-            <div className="search-bar-container">
+            <div id="screen-blur"className="screen-blur-hidden"></div>
+            <div id="search-bar-container" className="search-bar-container">
                 <HStack>
                     <Autocomplete
                         className="search-bar"

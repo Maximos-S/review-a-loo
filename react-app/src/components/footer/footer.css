@@ -7,7 +7,18 @@
     bottom:0px;
     padding: 20px;
 }
+.link-icons {
+    display: flex;
+    font-size: 35px;
+}
 
+.footer-container > p >a:hover {
+    color: #ECC94B;
+}
+
+.link-icons >a:hover {
+    color: #ECC94B;
+}
 .footer-header {
     font-size: 40px;
 }
