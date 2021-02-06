@@ -64,6 +64,7 @@ const ReviewCard = ({review}) => {
         <div className="review-border">
         <div className="review-container">
                 <div className="review-user">
+                    <img className="review-profile-pic" src={review.user.img_url} onClick={rerouteUser} alt="user profile picture"/>
                     <div className="review-user-title" onClick={rerouteUser}>
                         {review.user.username}
                     </div>
